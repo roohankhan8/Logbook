@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #ececec;
+}
+.header {
+  background-color: ghostwhite;
+  padding: 4px;
+  margin: 3px;
+  padding-right: 20px;
+  padding-left: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*------------ Login container ------------*/
+
+.box-area {
+  width: 930px;
+}
+
+/*------------ Right box ------------*/
+
+.right-box {
+  padding: 40px 30px 40px 40px;
+}
+.right-box b {
+  color: darkgreen;
+}
+.right-box a {
+  color: darkgreen;
+  text-decoration: none;
+}
+.input-group button {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 10px;
+}
+.input-group input {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-radius: 10px;
+  border-color: darkgreen;
+}
+.right-box h1 {
+  color: darkgreen;
+  font-weight: bold;
+  font-size: 35px;
+  font-family: "Times New Roman", Times, serif;
+}
+/*------------ Custom Placeholder ------------*/
+
+::placeholder {
+  font-size: 16px;
+}
+
+.rounded-4 {
+  border-radius: 20px;
+}
+.rounded-5 {
+  border-radius: 30px;
+}
+.btns {
+  border-radius: 30px;
+  background-color: darkgreen;
+  width: 20pc;
+}
+
+/*------------ For small screens------------*/
+
+@media only screen and (max-width: 768px) {
+  .box-area {
+    margin: 0 10px;
+  }
+  .left-box {
+    height: 0px;
+    overflow: hidden;
+  }
+  .right-box {
+    padding: 20px;
+  }
+}
+.signup {
+  background-color: whitesmoke;
+}
+.navbars {
+  background-attachment: fixed;
+  background-color: darkgreen;
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+  margin: 0px;
+  padding: 1px;
+}
+
+.cardsection {
+  min-height: 100vh;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  /* Responsive behaviour */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  margin: 56px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 15px 35px -15px rgba(0, 0, 0, 0.5),
+    0 5px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-image img {
+  width: 110px;
+  transform: scale(1.2);
+}
+
+p {
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.name {
+  margin-top: 80px;
+  font-size: 1.4em;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+}
+
+/* ____________________Profile css_______________________ */
+
+.form-control:focus {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border-color: green;
+}
+
+.profile-button {
+  background: darkgray;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+  border: white;
+}
+
+.profile-button:hover {
+  background: darkgreen;
+}
+
+.profile-button:focus {
+  background: darkgreen;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.profile-button:active {
+  background: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.back:hover {
+  color: darkgreen;
+  cursor: pointer;
+}
+
+.labels {
+  font-size: 12px;
+  color: darkgreen;
+}
+
+.add-experience:hover {
+  background: #0f451d;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #0d5a1b;
+}
+
+a {
+  text-decoration: none;
+}
+
+.fa-eye {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+/* ____________________end_______________________ */

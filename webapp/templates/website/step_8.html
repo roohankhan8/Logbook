@@ -1,0 +1,179 @@
+{% extends 'header_2.html' %} 
+{% block title %}Step 8{% endblock %} 
+{% load static %} 
+{% block content %}
+<!-- second header  -->
+<nav class="navbars">
+  <div class="container-fluid-nav text-center">
+    <h5>STEP 8- PREPARE TO MARKET</h5>
+  </div>
+</nav>
+<!-- second header ends  -->
+<!-- Question Answeer Box -->
+<div class="QA_container mb-1 p-5">
+  <form>
+    <div class="form-group">
+      <label class="form-label" for="inputlg"><b>Instructions</b> </label>
+      <label class="form-label" for="inputlg" style="color: green">
+        Once the prototype of the product is ready, there are four decisions you
+        need to make to see how you can effectively market this product. These
+        are price, branding, value and how you will sell the product.
+        <br />
+        Decide on a catchy name for the product that will appeal to most people
+        and also convey the purpose of the product. Think about words and word
+        combinations that describe your product and the solution it provides.
+        Then use them to decide on a name.<br />
+        <br />
+      </label>
+      <label class="form-label" for="inputlg"
+        >8.1 What possible words, word combinations and names can you think of?
+      </label>
+      <textarea
+        class="form-control"
+        rows="5"
+        style="
+          height: 100%;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 19px;
+        "
+        placeholder="Your Answer"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="inputlg">
+        8.2 Now think of the value your product offers. List the functions and
+        benefits it offers to the user. How is it better and/ or different than
+        the products already available in the market? .
+      </label>
+      <textarea
+        class="form-control"
+        rows="5"
+        style="
+          height: 100%;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 19px;
+        "
+        placeholder="Your Answer"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="inputlg"
+        >8.3 Determine the price at which you will sell it. What it cost you to
+        build the product? What it will cost you to sell it? What will people be
+        willing to pay for it? .</label
+      >
+      <textarea
+        class="form-control"
+        rows="5"
+        style="
+          height: 100%;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 19px;
+        "
+        placeholder="Your Answer"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="inputlg"
+        >8.4 Finally, decide where will customers be able to buy it. .</label
+      >
+      <textarea
+        class="form-control"
+        rows="5"
+        style="
+          height: 100%;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 19px;
+        "
+        placeholder="Your Answer"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="inputlg"
+          >8.5 Describe your typical customer. What is their :</label
+        >
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">Age:</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="Enter age"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Gender</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="Enter gender"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Education Level:</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="Enter education level:"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Household Size:</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="Enter household size:"
+              value=""
+            />
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Marital Status:</label
+            ><input
+              type="text"
+              class="form-control"
+              placeholder="Enter marital status:"
+              value=""
+            />
+          </div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="inputlg">Other Notes</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        placeholder="Write here"
+        required
+      ></textarea>
+    </div>
+  </form>
+</div>
+<!-- Question Answeer Box  Ends-->
+<!-- Buttons-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 d-flex align-items-center justify-content-start">
+      <button class="btn btn-success mr-1" type="button">
+        <a href="{% url 'step_7' %}">Back</a>
+      </button>
+      <button class="btn btn-success mr-1" type="submit">Submit</button>
+    </div>
+    <div class="col-6 d-flex align-items-center justify-content-end">
+      <button class="btn btn-success mr-1" type="button">Preview</button>
+      <button class="btn btn-success mr-1" type="button">Save</button>
+      <button class="btn btn-success mr-1" type="button">
+        <a href="{% url 'survey' %}">Next</a>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Buttons ends-->
+{% endblock %}

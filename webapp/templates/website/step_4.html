@@ -1,0 +1,98 @@
+{% extends 'header_2.html' %} 
+{% block title %}Step 4{% endblock %} 
+{% load static %} 
+{% block content %}
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 4- OVER TO THE DRAWING BOARD</h5>
+      </div>
+    </nav>
+    <!-- second header ends  -->
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-5">
+      <form>
+        <div class="form-group">
+          <label for="formFileMultiple" class="form-label"
+            >4.1 In as much detail as possible, draw a blue print/ model of how
+            your solution will (a) look; (b) what parts/ components/ elements it
+            will involve; (c) how it will work. If possible, show or list all
+            its functions</label
+          >
+          <input
+            class="form-control form-control-lg"
+            id="formFileLg"
+            type="file"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >4.2 Talk to experts and potential users of your solution about the
+            obstacles/ problems you are likely to face in making a real model of
+            your design. Note those problems and how you identified them. Note
+            what the experts and users said, their experience in this area, and
+            why you chose to talk to them. Along with the observations of
+            others, also note what problems you think you will face in making a
+            model.
+          </label>
+          <textarea
+            class="form-control"
+            rows="10"
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >4.3 How will you overcome these issues? As you record how you will
+            overcome these issues, if the changes are minor, revise the existing
+            model iteration. If you make major changes to your model, add more
+            iterations to your first model (Model i1….Model i2)</label
+          >
+          <textarea
+            class="form-control"
+            rows="10"
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >4.4 There is a great emphasis needed on making green solutions.
+            This means whatever solution you arrive at, try to make it as
+            sustainable as possible. Note here how your design can be more
+            sustainable. If it uses less of the natural resources, or does not
+            damage the environment, it is a sustainable solution?</label
+          >
+          <textarea
+            class="form-control"
+            rows="10"
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+      </form>
+      <div></div>
+    </div>
+    <!-- Question Answeer Box  Ends-->
+    <!-- Buttons-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-start">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_3' %}">Back</a>
+          </button>
+          <button class="btn btn-success mr-1" type="submit">Submit</button>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+          <button class="btn btn-success mr-1" type="button">Preview</button>
+          <button class="btn btn-success mr-1" type="button">Save</button>
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_5' %}">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons ends-->
+    {% endblock %}

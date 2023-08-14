@@ -1,0 +1,97 @@
+{% extends 'header_2.html' %} 
+{% block title %}Step 7{% endblock %} 
+{% load static %} 
+{% block content %}
+<!-- second header  -->
+<nav class="navbars">
+  <div class="container-fluid-nav text-center">
+    <h5>STEP 7 - TEST YOUR PROTOTYPE</h5>
+  </div>
+</nav>
+<!-- second header ends  -->
+<!-- Question Answeer Box -->
+<div class="QA_container mb-1 p-5">
+  <form>
+    <div class="form-group">
+      <label class="form-label" for="inputlg">
+        7.1 Test your prototype on different parameters and note the extent to
+        which it satisfies the requirements you had set. Identify any problems
+        you see. Describe how you tested your prototype.
+      </label>
+      <textarea
+        class="form-control"
+        rows="8"
+        placeholder="Your Answer"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="inputlg"
+        >7.2 Identify and record all positive and negative observations you have
+        each time you test your prototype.
+      </label>
+      <label class="form-label" for="inputlg" style="color: green">
+        At this point, consider if you need to go back
+        <a href="{% url 'step_4' %}">TO THE DRAWING BOARD (Step 4)</a> or
+        <a href="{% url 'step_6' %}">OVER TO THE LAB(Step 6)</a> for some revisions to
+        the prototype. Keep creating new versions of ModelI1…, ProtoI as needed
+        so you can record all the iterations you did. Keep making changes to
+        your prototype and try new iterations until your invention works as
+        planned.
+      </label>
+
+      <textarea
+        class="form-control"
+        rows="8"
+        placeholder="Your Answer"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="inputlg" style="color: green"
+        ><b>Positive</b></label
+      >
+      <textarea
+        class="form-control"
+        rows="5"
+        placeholder="Write here"
+        required
+      ></textarea>
+    </div>
+    <div>
+      <div class="form-group">
+        <label class="form-label" for="inputlg" style="color: green"
+          ><b>Negative</b></label
+        >
+        <textarea
+          class="form-control"
+          rows="5"
+          placeholder="Write here"
+          required
+        ></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Question Answeer Box  Ends-->
+<!-- Buttons-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 d-flex align-items-center justify-content-start">
+      <button class="btn btn-success mr-1" type="button">
+        <a href="{% url 'step_6' %}">Back</a>
+      </button>
+      <button class="btn btn-success mr-1" type="submit">Submit</button>
+    </div>
+    <div class="col-6 d-flex align-items-center justify-content-end">
+      <button class="btn btn-success mr-1" type="button">Preview</button>
+      <button class="btn btn-success mr-1" type="button">Save</button>
+      <button class="btn btn-success mr-1" type="button">
+        <a href="{% url 'step_8' %}">Next</a>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Buttons ends-->
+{% endblock %}

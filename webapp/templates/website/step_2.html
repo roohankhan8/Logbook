@@ -1,0 +1,93 @@
+{% extends 'header_2.html' %} 
+{% block title %}Step 2{% endblock %} 
+{% load static %} 
+{% block content %}
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 2- DEFINE AND MAKE SENSE OF THE PROBLEM</h5>
+      </div>
+    </nav>
+    <!-- second header ends  -->
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-5">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >2.1 Talk to others and understand all aspects of the problems. Now,
+            pick one problem you want to move forward with and take the next
+            step.</label
+          >
+          <textarea
+            class="form-control"
+            rows="5"
+            style="
+              height: 100%;
+              font-family: 'Times New Roman', Times, serif;
+              font-size: 19px;
+            "
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >2.2 Define and describe the problem in great detail so it captures
+            all aspects and conveys the same extent and nature of the problem
+            when someone else reads it. Share how you came up with the problem.
+            .</label
+          >
+          <textarea
+            class="form-control"
+            rows="5"
+            style="
+              height: 100%;
+              font-family: 'Times New Roman', Times, serif;
+              font-size: 19px;
+            "
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+      </form>
+      <div class="form-group">
+        <label class="form-label" for="inputlg"
+          >2.3 Very specifically, list what do you want your solution to
+          achieve? .</label
+        >
+        <textarea
+          class="form-control"
+          rows="5"
+          style="
+            height: 100%;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 19px;
+          "
+          placeholder="Your Answer"
+          required
+        ></textarea>
+      </div>
+      <div></div>
+    </div>
+    <!-- Question Answeer Box  Ends-->
+    <!-- Buttons-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-start">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_1' %}">Back</a>
+          </button>
+          <button class="btn btn-success mr-1" type="submit">Submit</button>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+          <button class="btn btn-success mr-1" type="button">Preview</button>
+          <button class="btn btn-success mr-1" type="button">Save</button>
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_3' %}">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons ends-->
+    {% endblock %}

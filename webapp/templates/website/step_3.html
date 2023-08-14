@@ -1,0 +1,64 @@
+{% extends 'header_2.html' %} 
+{% block title %}Step 3{% endblock %} 
+{% load static %} 
+{% block content %}
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h6>STEP 3- DEVELOP IDEAS AND DRAFT ALTERNATE SOLUTIONS</h6>
+      </div>
+    </nav>
+    <!-- second header ends  -->
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-5">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >3.1 List the most important factors in solving this problem. Also,
+            what are the different ways you can solve this problem?
+          </label>
+          <textarea
+            class="form-control"
+            rows="10"
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >3.2 Research different sources to find any similar solutions
+            already available to use. How are they different from what you are
+            trying to do?</label
+          >
+          <textarea
+            class="form-control"
+            rows="10"
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+      </form>
+      <div></div>
+    </div>
+    <!-- Question Answeer Box  Ends-->
+    <!-- Buttons-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-start">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_2' %}">Back</a>
+          </button>
+          <button class="btn btn-success mr-1" type="submit">Submit</button>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+          <button class="btn btn-success mr-1" type="button">Preview</button>
+          <button class="btn btn-success mr-1" type="button">Save</button>
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_4' %}">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons ends-->
+    {% endblock %}

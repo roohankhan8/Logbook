@@ -1,0 +1,28 @@
+ body{
+   background-color: ghostwhite
+    }
+  .QA_container{
+    margin: 17px;
+    text-align: justify;
+  }
+ .container{
+  padding: 5px;
+ 
+ }
+  .container h5{
+  padding: 5px;
+  text-align: center;
+ }
+   .container p{
+  padding: 5px;
+  text-align: justify;
+ }
+ .form-label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19PX;
+ }
+.btn a {
+    text-decoration: none;
+    color: white;
+    
+}

@@ -1,0 +1,72 @@
+{% extends 'header_2.html' %} 
+{% block title %}Step 6{% endblock %} 
+{% load static %} 
+{% block content %}
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 6 - OVER TO THE LABORATORY</h5>
+      </div>
+    </nav>
+    <!-- second header ends  -->
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-5">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >6.1 Arrange the materials, tools and machinery you'll use to build
+            your prototype. Do not hesitate to ask for help from others where
+            you need it.Proto1-Build: Note any and all observations you have
+            while building. Attach pictures of the process as you build.</label
+          >
+          <textarea
+            class="form-control"
+            rows="8"
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="formFileMultiple" class="form-label"
+            >Upload Picture</label
+          >
+          <input
+            class="form-control form-control-lg"
+            id="formFileLg"
+            type="file"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">Notes</label>
+          <textarea
+            class="form-control"
+            rows="5"
+            placeholder="Write notes"
+            required
+          ></textarea>
+        </div>
+      </form>
+      <div></div>
+    </div>
+    <!-- Question Answeer Box  Ends-->
+    <!-- Buttons-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-start">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_5' %}">Back</a>
+          </button>
+          <button class="btn btn-success mr-1" type="submit">Submit</button>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+          <button class="btn btn-success mr-1" type="button">Preview</button>
+          <button class="btn btn-success mr-1" type="button">Save</button>
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_7' %}">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons ends-->
+    {% endblock %}

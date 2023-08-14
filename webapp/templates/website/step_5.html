@@ -1,0 +1,95 @@
+{% extends 'header_2.html' %} 
+{% block title %}Step 5{% endblock %} 
+{% load static %} 
+{% block content %}
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 5- PLAN FOR PROTOTYPING</h5>
+      </div>
+    </nav>
+    <!-- second header ends  -->
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-5">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >5.1 Talk to experts (engineers, scientists, entrepreneurs) to: (a)
+            figure out the best materials, parts and components to use; (b) and
+            where to find them. Record here the materials, parts and components
+            you will use and where you will get them from.</label
+          >
+          <textarea
+            class="form-control"
+            rows="5"
+            style="
+              height: 100%;
+              font-family: 'Times New Roman', Times, serif;
+              font-size: 19px;
+            "
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"
+            >5.2 Read research articles and other published information to: (a)
+            better understand the parts and materials you plan to use; (b) the
+            skills needed to make the model into a real invention; (c) explore
+            if you need any additional skills to make your invention. Note your
+            findings here .</label
+          >
+          <textarea
+            class="form-control"
+            rows="5"
+            style="
+              height: 100%;
+              font-family: 'Times New Roman', Times, serif;
+              font-size: 19px;
+            "
+            placeholder="Your Answer"
+            required
+          ></textarea>
+        </div>
+      </form>
+      <div class="form-group">
+        <label class="form-label" for="inputlg"
+          >5.3 Connect with experts who can help you make the prototype. Note
+          the credentials of the experts here. .</label
+        >
+        <textarea
+          class="form-control"
+          rows="5"
+          style="
+            height: 100%;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 19px;
+          "
+          placeholder="Your Answer"
+          required
+        ></textarea>
+      </div>
+      <div></div>
+    </div>
+    <!-- Question Answeer Box  Ends-->
+    <!-- Buttons-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-start">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_4' %}">Back</a>
+          </button>
+          <button class="btn btn-success mr-1" type="submit">Submit</button>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+          <button class="btn btn-success mr-1" type="button">Preview</button>
+          <button class="btn btn-success mr-1" type="button">Save</button>
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_6' %}">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Buttons ends-->
+    {% endblock %}

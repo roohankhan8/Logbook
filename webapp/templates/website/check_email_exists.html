@@ -1,0 +1,8 @@
+<h3>Password reset</h3>
+
+<p>Forgotten</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="email" name="email" id="email">
+    <input type="submit" value="Check Email">
+</form>

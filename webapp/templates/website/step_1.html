@@ -1,0 +1,61 @@
+{% extends 'header_2.html' %} 
+{% block title %}Step 1{% endblock %} 
+{% load static %} 
+{% block content %}
+<!-- second header  -->
+<nav class="navbars">
+  <div class="container-fluid-nav text-center">
+    <h5>STEP 1- IDENTIFY THE PROBLEM</h5>
+  </div>
+</nav>
+
+<!-- second header ends  -->
+<!-- Question Answeer Box -->
+<div class="QA_container mb-1 p-5">
+  <form>
+    <div class="form-group">
+      <label
+        class="form-label"
+        for="inputlg"
+        style="font-family: 'Times New Roman', Times, serif; font-size: 19px"
+      >
+        Q1.Identify a few problems you or your friends and family relate
+        with.</label
+      >
+      <textarea
+        class="form-control"
+        rows="10"
+        style="
+          height: 100%;
+          font-family: 'Times New Roman', Times, serif;
+          font-size: 19px;
+        "
+        placeholder="Your Answer"
+        required
+      ></textarea>
+    </div>
+  </form>
+  <div></div>
+</div>
+<!-- Question Answeer Box  Ends-->
+<!-- Buttons-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 d-flex align-items-center justify-content-start">
+      <button class="btn btn-success mr-1" type="button">
+        <a href="">Back</a>
+      </button>
+      <button class="btn btn-success mr-1" type="submit">Submit</button>
+    </div>
+    <div class="col-6 d-flex align-items-center justify-content-end">
+      <button class="btn btn-success mr-1" type="button">Preview</button>
+      <button class="btn btn-success mr-1" type="button">Save</button>
+      <button class="btn btn-success mr-1" type="button">
+        <a href="{% url 'step_2' %}">Next</a>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Buttons ends-->
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'website/header_2.html' %} 
+{% block title %}Logbook Completed{% endblock %}
+{% load static %} 
+{% block content %}
+    <style>
+      .box1 {
+        outline-style: solid;
+        margin: 2px;
+        padding: 5px;
+        width: 220px;
+        text-align: center;
+        background-color: beige;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      }
+      .box2 {
+        outline-style: dashed;
+        margin: 2px;
+        padding: 5px;
+        width: 220px;
+        text-align: center;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+          rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      }
+      .box {
+        content: "\2193";
+        margin: 2px;
+        padding: 5px;
+        width: 220px;
+        text-align: center;
+      }
+      .flowchart_container {
+        margin: 40px;
+        align-items: center;
+        padding: 10px;
+      }
+      .btn a {
+        text-decoration: none;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h3>Invention Flowchart</h3>
+      </div>
+    </nav>
+
+    <div class="flowchart_container">
+      <center>
+        <div class="box1">RECOGNIZE</div>
+        <div class="box"><img src="{% static 'images/down arrow.png' %}" width="20px" /></div>
+        <div class="box2">DEFINEAND MAKE SENCE</div>
+        <div class="box"><img src="{% static 'images/down arrow.png' %}" width="20px" /></div>
+        <div class="box1">DEVELOP IDEAS</div>
+        <div class="box"><img src="{% static 'images/down arrow.png' %}" width="20px" /></div>
+        <div class="box2">GO TO DRAWING BOARD</div>
+        <div class="box"><img src="{% static 'images/down arrow.png' %}" width="20px" /></div>
+        <div class="box1">LAN FOR PROTOTYPING</div>
+        <div class="box"><img src="{% static 'images/down arrow.png' %}" width="20px" /></div>
+        <div class="box2">OVER THE LAB</div>
+        <div class="box"><img src="{% static 'images/down arrow.png' %}" width="20px" /></div>
+        <div class="box1">TEST</div>
+        <div class="box"><img src="{% static 'images/down arrow.png' %}" width="20px" /></div>
+        <div class="box2">PREPATE THE MARKET</div>
+      </center>
+    </div>
+    <!-- Buttons-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-start">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="#">Back</a>
+          </button>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'step_1' %}">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <!-- Buttons ends-->
+    {% endblock %}

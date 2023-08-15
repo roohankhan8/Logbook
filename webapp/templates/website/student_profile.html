@@ -61,8 +61,8 @@
                   ><input
                     type="text"
                     class="form-control"
-                    placeholder="{{user.f_name}}"
-                    value=""
+                    placeholder=""
+                    value="{{student.first_name}}"
                     name="f_name"
                   />
                 </div>
@@ -71,8 +71,8 @@
                   ><input
                     type="text"
                     class="form-control"
-                    value=""
-                    placeholder="{{user.l_name}}"
+                    value="{{student.last_name}}"
+                    placeholder=""
                     name="l_name"
                   />
                 </div>
@@ -81,9 +81,13 @@
                 <div class="col-md-12">
                   <label class="labels">Gender</label>
                   <select name="gender" id="">
-                    <option value="male">Male</option>
+                    {% if student.gender == "male" %}
+                    <option selected value="male">Male</option>
                     <option value="female">Female</option>
-                    <option value="others">Others</option>
+                    {% else %}
+                    <option value="male">Male</option>
+                    <option selected value="female">Female</option>
+                    {% endif %}
                   </select>
                 </div>
                 <div class="col-md-12">
@@ -91,8 +95,8 @@
                   ><input
                     type="text"
                     class="form-control"
-                    placeholder="{{user.excited}}"
-                    value=""
+                    placeholder=""
+                    value="{{student.excited_about}}"
                     name="excited"
                   />
                 </div>
@@ -101,8 +105,8 @@
                   ><input
                     type="text"
                     class="form-control"
-                    placeholder="{{user.time}}"
-                    value=""
+                    placeholder=""
+                    value="{{student.free_time}}"
                     name="time"
                   />
                 </div>
@@ -111,8 +115,8 @@
                   ><input
                     type="text"
                     class="form-control"
-                    placeholder="{{user.book}}"
-                    value=""
+                    placeholder=""
+                    value="{{student.fav_book}}"
                     name="book"
                   />
                 </div>
@@ -121,8 +125,8 @@
                   ><input
                     type="text"
                     class="form-control"
-                    placeholder="{{user.food}}"
-                    value=""
+                    placeholder=""
+                    value="{{student.fav_food}}"
                     name="food"
                   />
                 </div>

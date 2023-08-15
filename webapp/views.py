@@ -10,6 +10,8 @@ from .decorators import *
 
 
 # Create your views here.
+
+#SIGNUP SIGNIN VIEWS
 @unauthenticated
 def register(request):
     if request.method == "POST":
@@ -57,7 +59,6 @@ def register(request):
             messages.error(request, "Username already taken!")
     return render(request, "website/register.html")
 
-
 @unauthenticated
 def loginPage(request):
     if request.method == "POST":
@@ -81,7 +82,6 @@ def loginPage(request):
         else:
             messages.error(request, "Username or Password is incorrect!")
     return render(request, "website/login.html")
-
 
 @unauthenticated
 def check_email_exists(request):
@@ -135,6 +135,10 @@ def student_profile(request):
     context = {"student": student}
     return render(request, "website/student_profile.html", context)
 
+
+@login_required(login_url="/")
+def course_outline(request):
+    return render(request, "website/outline.html")
 
 @login_required(login_url="/")
 def flowchart(request):
@@ -191,7 +195,7 @@ def survey(request):
 def logbook_complete(request):
     return render(request, "website/logbook_complete.html")
 
-
+# ========================TEAMS========================
 @login_required(login_url="/")
 def team_portal(request):
     return render(request, "website/team_portal.html")
@@ -201,7 +205,7 @@ def team_portal(request):
 def view_team(request):
     return render(request, "website/view_team.html")
 
-
+# ========================TEACHERS========================
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Teachers"])
 def teacher_profile(request):

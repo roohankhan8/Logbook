@@ -13,7 +13,7 @@ admin_group = Group.objects.get(name="Admins")
 class StudentProfile(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     username=models.CharField(max_length=20,null=True)
-    email = models.CharField(max_length=20, null=True)
+    email = models.CharField(max_length=200, null=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     gender = models.CharField(max_length=20)
@@ -21,7 +21,7 @@ class StudentProfile(models.Model):
     free_time = models.CharField(max_length=200, null=True, blank=True)
     fav_book = models.CharField(max_length=200, null=True, blank=True)
     fav_food = models.CharField(max_length=200, null=True, blank=True)
-    profile_pic=models.ImageField(default='/images.png' ,null=True, blank=True)
+    profile_pic=models.ImageField(default='profilepics/images.png' ,null=True, blank=True)
     data_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -1,14 +1,21 @@
 from django.urls import path
-
 # from google_sign import settings
 from . import views
 from django.urls.resolvers import URLPattern
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    #SIGNUP SIGNIN URLS
     path("", views.loginPage, name="login"),
     path("register/", views.register, name="register"),
     path("logout/", views.logout_view, name="logout"),
+
+    #STUDENT'S URLS
+    path("student_portal/", views.student_portal, name="student_portal"),
+    path("student_profile/", views.student_profile, name="student_profile"),
+
+    #LOGBOOK URLS
+    path("course_outline/", views.course_outline, name="course_outline"),
     path("flowchart/", views.flowchart, name="flowchart"),
     path("step_1/", views.step_1, name="step_1"),
     path("step_2/", views.step_2, name="step_2"),
@@ -18,13 +25,17 @@ urlpatterns = [
     path("step_6/", views.step_6, name="step_6"),
     path("step_7/", views.step_7, name="step_7"),
     path("step_8/", views.step_8, name="step_8"),
-    path("team_portal/", views.team_portal, name="team_portal"),
-    path("view_team/", views.view_team, name="view_team"),
-    path("student_portal/", views.student_portal, name="student_portal"),
-    path("student_profile/", views.student_profile, name="student_profile"),
-    path("teacher_profile/", views.teacher_profile, name="teacher_profile"),
     path("survey/", views.survey, name="survey"),
     path("logbook_complete/", views.logbook_complete, name="logbook_complete"),
+
+    #TEAMS URLS
+    path("team_portal/", views.team_portal, name="team_portal"),
+    path("view_team/", views.view_team, name="view_team"),
+
+    #TEACHER'S URLS
+    path("teacher_profile/", views.teacher_profile, name="teacher_profile"),
+
+    #FORGOT PASSWORD URLS
     path("check_email_exists/", views.check_email_exists, name="check_email_exists"),
     path(
         "reset_password/",

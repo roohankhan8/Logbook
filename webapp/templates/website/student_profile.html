@@ -1,7 +1,58 @@
 {% extends 'website/profile.html' %} 
-{% block title %}Teacher Profile{% endblock %} 
+{% block title %}student Profile{% endblock %} 
 {% load static %} 
 {% block content %}
+<img
+                class="rounded-circle mt-5"
+                width="150px"
+                src="{{request.user.studentprofile.profile_pic.url}}"
+              />
+              <span class="font-weight-bold">{{user.username}}</span>
+              <span class="text-black-50">{{user.email}}</span>
+            </div>
+          </div>
+<div class="col-md-8">
+  <div class="p-3 py-5">
+    <div
+      class="d-flex justify-content-between align-items-center mb-3"
+    >
+      <h4 class="text-center">Profile</h4>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-6">
+        <label class="labels">First Name</label
+        ><input
+          type="text"
+          class="form-control"
+          placeholder="First name"
+          value="{{student.first_name}}"
+          name="f_name"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="labels">Last Name</label
+        ><input
+          type="text"
+          class="form-control"
+          value="{{student.last_name}}"
+          placeholder="Last name"
+          name="l_name"
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <label class="labels">Gender</label>
+        <select name="gender" id="">
+          {% if student.gender == "male" %}
+          <option selected value="male">Male</option>
+          <option value="female">Female</option>
+          {% else %}
+          <option value="male">Male</option>
+          <option selected value="female">Female</option>
+          {% endif %}
+        </select>
+      </div>
                 <div class="col-md-12">
                   <label class="labels">I am Excited acout:</label
                   ><input

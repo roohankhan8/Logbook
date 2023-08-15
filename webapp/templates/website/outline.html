@@ -1,4 +1,4 @@
-{% extends 'website/header_3.html' %} 
+{% extends 'website/header_2.html' %} 
 {% block title %}Course Outline{% endblock %} 
 {% load static %} 
 {% block content %}
@@ -15,81 +15,82 @@
             <div class="row">
                 <div class="mx-auto col-md-10" style="padding: 1px;">
                      
-                    <a href="record of invention.html">
+                    <a href="{% url 'record_of_invention' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
                             <small>Record of Invention (ROI)</small>
                         </button>
                         
                     </a>
                     <br><br>
-                    <a href="statement of originality.html"> <!-- Add link of statemnt of originality-->
+                    <a href="{% url 'statement_of_originality' %}"> 
+                        <!-- Add link of statemnt of originality-->
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
                             <small>Statement of Originality</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="student profile.html">
+                    <a href="student profile">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
                             <small>All about me</small>
                         </button>
                     </a>  
                     <br><br>
-                    <a href="Step1.html">
+                    <a href="{% url 'step_1' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
-                            <small>Step 1 : Identify the Problem</small>
+                            <small>step_ 1 : Identify the Problem</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="Step2.html">
+                    <a href="{% url 'step_2' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
-                            <small>Step 2 : Define and make sense of the problem</small>
+                            <small>step_ 2 : Define and make sense of the problem</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="step3.html">
+                    <a href="{% url 'step_3' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
-                            <small>Step 3 : Develop ideas and draft alternate solutions</small>
+                            <small>step_ 3 : Develop ideas and draft alternate solutions</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="step4.html">
+                    <a href="{% url 'step_4' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
-                            <small>Step 4 : Over to the drawing board</small>
+                            <small>step_ 4 : Over to the drawing board</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="step5.html">
+                    <a href="{% url 'step_5' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
-                            <small>Step 5 : Plan for prototyping</small>
+                            <small>step_ 5 : Plan for prototyping</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="step6.html">
+                    <a href="{% url 'step_6' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
-                            <small>Step 6 : Over to the laboratory</small>
+                            <small>step_ 6 : Over to the laboratory</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="step7.html">
+                    <a href="{% url 'step_7' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
-                            <small>Step 7 : Test your prototype</small>
+                            <small>step_ 7 : Test your prototype</small>
                         </button>
                     </a>
                     <br>
                     <br>
-                    <a href="step8.html">
+                    <a href="{% url 'step_8' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
-                            <small>Step 8 : Prepare to market</small>
+                            <small>step_ 8 : Prepare to market</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="survay.html">
+                    <a href="{% url 'survey' %}">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
                             <small>Survey for Students</small>
                         </button>
                     </a>
                     <br><br>
-                    <a href="Step2.html">
+                    <a href="step_2">
                         <button style="border-radius: 20px; border-color: gray; color: darkgreen;" class="btn btn-lg btn-light w-100  fs-6">
                             <small>Notes</small>
                         </button>
@@ -111,7 +112,7 @@
         </div>
         <div class="col-6 d-flex align-items-center justify-content-end">
           <button class="btn btn-success mr-1" type="button">
-            <a href="record of invention.html">Next</a>
+            <a href="record of invention">Next</a>
           </button>
         </div>
       </div>

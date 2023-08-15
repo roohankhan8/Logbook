@@ -11,7 +11,7 @@
     <!-- second header ends  -->
     <!-- Question Answeer Box -->
     <div class="QA_container mb-1 p-5">
-      <form>
+      <form method="post">
         <div class="form-group">
           <label class="form-label" for="inputlg"
             >3.1 List the most important factors in solving this problem. Also,
@@ -37,11 +37,7 @@
             required
           ></textarea>
         </div>
-      </form>
-      <div></div>
-    </div>
-    <!-- Question Answeer Box  Ends-->
-    <!-- Buttons-->
+           <!-- Buttons-->
 
     <div class="container">
       <div class="row">
@@ -49,16 +45,10 @@
           <button class="btn btn-success mr-1" type="button">
             <a href="{% url 'step_2' %}">Back</a>
           </button>
-          <button class="btn btn-success mr-1" type="submit">Submit</button>
-        </div>
-        <div class="col-6 d-flex align-items-center justify-content-end">
-          <button class="btn btn-success mr-1" type="button">Preview</button>
-          <button class="btn btn-success mr-1" type="button">Save</button>
-          <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'step_4' %}">Next</a>
-          </button>
-        </div>
-      </div>
-    </div>
+          {% include 'website/buttons.html' %}
     <!-- Buttons ends-->
+      </form>
+    </div>
+    <!-- Question Answeer Box  Ends-->
+ 
     {% endblock %}

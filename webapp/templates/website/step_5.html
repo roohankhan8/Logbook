@@ -11,7 +11,7 @@
     <!-- second header ends  -->
     <!-- Question Answeer Box -->
     <div class="QA_container mb-1 p-5">
-      <form>
+      <form method="post">
         <div class="form-group">
           <label class="form-label" for="inputlg"
             >5.1 Talk to experts (engineers, scientists, entrepreneurs) to: (a)
@@ -51,7 +51,7 @@
             required
           ></textarea>
         </div>
-      </form>
+
       <div class="form-group">
         <label class="form-label" for="inputlg"
           >5.3 Connect with experts who can help you make the prototype. Note
@@ -69,10 +69,7 @@
           required
         ></textarea>
       </div>
-      <div></div>
-    </div>
-    <!-- Question Answeer Box  Ends-->
-    <!-- Buttons-->
+          <!-- Buttons-->
 
     <div class="container">
       <div class="row">
@@ -80,16 +77,10 @@
           <button class="btn btn-success mr-1" type="button">
             <a href="{% url 'step_4' %}">Back</a>
           </button>
-          <button class="btn btn-success mr-1" type="submit">Submit</button>
-        </div>
-        <div class="col-6 d-flex align-items-center justify-content-end">
-          <button class="btn btn-success mr-1" type="button">Preview</button>
-          <button class="btn btn-success mr-1" type="button">Save</button>
-          <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'step_6' %}">Next</a>
-          </button>
-        </div>
-      </div>
-    </div>
+          {% include 'website/buttons.html' %}
     <!-- Buttons ends-->
+  </form>
+    </div>
+    <!-- Question Answeer Box  Ends-->
+
     {% endblock %}

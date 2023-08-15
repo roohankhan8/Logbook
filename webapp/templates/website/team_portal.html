@@ -2,9 +2,75 @@
 {% block title %}Team Portal{% endblock %} 
 {% load static %} 
 {% block content %}
+<style>
+  .close-button {
+    color: white;
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btns {
+    box-shadow: rgb(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    width: 130px;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+  }
+
+  .overlay1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .centered-popup {
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 100%;
+    transform: scale(0.1);
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .centered-popup {
+      max-width: 100%;
+
+    }
+  }
+</style>
 <!-- Team options -->
 <div class="py-5 text-center">
-  <div class="container">
+  <center><div class="container">
     <div class="row">
       <div class="mx-auto col-md-12">
         <h3 class="mb-3" style="font-family: 'Times New Roman', Times, serif">
@@ -42,7 +108,7 @@
           src="{% static 'images/Collaboration-pana.png' %}"
           alt="Card image cap"
         />
-        <button type="button" class="btn btn-success btns">Join Team</button>
+        <button type="button" onclick="openPopup1()" class="btn btn-success btns">Join Team</button>
       </div>
       <div class="col-lg-4 p-4">
         <div>
@@ -59,12 +125,99 @@
             src="{% static 'images/create team.png' %}"
           />
         </div>
-        <button type="button" class="btn btn-warning btns" style="color: white">
+        <button type="button" onclick="openPopup()"  class="btn btn-warning btns" style="color: white">
           Create Team
         </button>
       </div>
     </div>
   </div>
-</div>
+</div></center>
 <!-- Team option ends-->
+  <!-- Overlay for Create Team popup -->
+  <div class="overlay" id="overlay">
+    <div class="centered-popup" id="popup">
+      <button type="button" class="close-button" aria-label="Close" onclick="closePopup()">&times;
+      </button><center>
+      <div class="container">
+        <h4 style="color: darkgreen; font-family: 'Times New Roman', Times, serif;">CREATE TEAM</h4>
+        <div class="container mt-5">
+          <div class="row g-3 align-items-center">
+            <div class="input-group mb-3">
+              <input required type="text" maxlength="30" class="form-control form-control-lg bg-light fs-6"
+                placeholder="Enter team name">
+            </div>
+          </div>
+          <p>REMEMBER: This team can contain a minimum of 1 and a maximum of 4 members.</p>
+        </div>
+        <button type="submit" class="btn btn-success">Create
+        </button>
+      </div>
+    </div>
+  </div></center>
+  
+  <!-- Overlay for Join Team popup -->
+  <div class="overlay1" id="overlay1">
+    <div class="centered-popup" id="popup1">
+      <button type="button" class="close-button" aria-label="Close" onclick="closePopup1()">&times;
+      </button>
+      <center>
+      <div class="container">
+        <h4 style="color: darkgreen; font-family: 'Times New Roman', Times, serif;">JOIN TEAM</h4>
+        <div class="container mt-5">
+          <div class="row g-3 align-items-center">
+            <div class="input-group mb-3">
+              <input required type="text" maxlength="30" class="form-control form-control-lg bg-light fs-6"
+                placeholder="Enter unique team code to join team">
+            </div>
+          </div>
+          <p style="color: red;">If you don't have team code , Lets create your new team!
+          </p>
+        </div>
+        <button type="button" class="btn btn-success">
+          Join
+        </button>
+      </div>
+    </div>
+  </div></center>
+  
+  <!--JavaScript code -->
+  <script>
+    let overlay = document.getElementById("overlay");
+    let popup = document.getElementById("popup");
+
+    let overlay1 = document.getElementById("overlay1");
+    let popup1 = document.getElementById("popup1");
+
+    function openPopup() {
+      overlay.style.display = "flex"; // Show the overlay
+      setTimeout(() => {
+        popup.style.opacity = "1";
+        popup.style.transform = "scale(1)"; // Open the popup with animation
+      }, 50); // Add slight delay for smoother transition
+    }
+
+    function closePopup() {
+      popup.style.opacity = "0";
+      popup.style.transform = "scale(0.1)"; // Close the popup with animation
+      setTimeout(() => {
+        overlay.style.display = "none"; // Hide the overlay after animation
+      }, 300);
+    }
+
+    function openPopup1() {
+      overlay1.style.display = "flex"; // Show the overlay
+      setTimeout(() => {
+        popup1.style.opacity = "1";
+        popup1.style.transform = "scale(1)"; // Open the popup with animation
+      }, 50); // Add slight delay for smoother transition
+    }
+
+    function closePopup1() {
+      popup1.style.opacity = "0";
+      popup1.style.transform = "scale(0.1)"; // Close the popup with animation
+      setTimeout(() => {
+        overlay1.style.display = "none"; // Hide the overlay after animation
+      }, 300);
+    }
+  </script>
 {% endblock %}

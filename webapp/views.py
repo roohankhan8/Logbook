@@ -11,7 +11,7 @@ from .decorators import *
 
 # Create your views here.
 
-#SIGNUP SIGNIN VIEWS
+#========================SIGNUP SIGNIN VIEWS========================
 @unauthenticated
 def register(request):
     if request.method == "POST":
@@ -141,48 +141,71 @@ def course_outline(request):
     return render(request, "website/outline.html")
 
 @login_required(login_url="/")
+def record_of_invention(request):
+    return render(request, "website/record_of_invention.html")
+
+@login_required(login_url="/")
+def statement_of_originality(request):
+    return render(request, "website/statement_of_originality.html")
+
+@login_required(login_url="/")
 def flowchart(request):
     return render(request, "website/flowchart.html")
-
 
 # ========================STEPS========================
 @login_required(login_url="/")
 def step_1(request):
+    if request.method=='POST':
+        return redirect('step_2')
     return render(request, "website/step_1.html")
 
 
 @login_required(login_url="/")
 def step_2(request):
+    if request.method=='POST':
+        return redirect('step_3')
     return render(request, "website/step_2.html")
 
 
 @login_required(login_url="/")
 def step_3(request):
+    if request.method=='POST':
+        return redirect('step_4')
     return render(request, "website/step_3.html")
 
 
 @login_required(login_url="/")
 def step_4(request):
+    if request.method=='POST':
+        return redirect('step_5')
     return render(request, "website/step_4.html")
 
 
 @login_required(login_url="/")
 def step_5(request):
+    if request.method=='POST':
+        return redirect('step_6')
     return render(request, "website/step_5.html")
 
 
 @login_required(login_url="/")
 def step_6(request):
+    if request.method=='POST':
+        return redirect('step_7')
     return render(request, "website/step_6.html")
 
 
 @login_required(login_url="/")
 def step_7(request):
+    if request.method=='POST':
+        return redirect('step_8')
     return render(request, "website/step_7.html")
 
 
 @login_required(login_url="/")
 def step_8(request):
+    if request.method=='POST':
+        return redirect('survey')
     return render(request, "website/step_8.html")
 
 

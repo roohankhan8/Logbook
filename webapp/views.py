@@ -38,9 +38,13 @@ def register(request):
                             email=my_user.email,
                             username=my_user.username,
                         )
-                        print("Student Profile created")
                     elif category == "teacher":
                         my_user.groups.add(teacher_group)
+                        TeacherProfile.objects.create(
+                            user=my_user,
+                            email=my_user.email,
+                            username=my_user.username,
+                        )
                     elif category == "judge":
                         my_user.groups.add(judge_group)
                     elif category == "admin":
@@ -108,8 +112,8 @@ def student_portal(request):
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def student_profile(request,pk):
-    student=StudentProfile.objects.get(username=pk)
+def student_profile(request):
+    student = request.user.studentprofile
     if request.method == "POST":
         first_name = request.POST.get("f_name")
         last_name = request.POST.get("l_name")
@@ -127,12 +131,9 @@ def student_profile(request,pk):
             fav_book=fav_book,
             fav_food=fav_food,
         )
-        print(
-            first_name, last_name, gender, excited_about, free_time, fav_book, fav_food
-        )
         return redirect("student_portal")
-    context={'student':student}
-    return render(request, "website/student_profile.html",context)
+    context = {"student": student}
+    return render(request, "website/student_profile.html", context)
 
 
 @login_required(login_url="/")
@@ -204,4 +205,21 @@ def view_team(request):
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Teachers"])
 def teacher_profile(request):
-    return render(request, "website/teacher_profile.html")
+    teacher = request.user.teacherprofile
+    if request.method == "POST":
+        first_name = request.POST.get("f_name")
+        last_name = request.POST.get("l_name")
+        gender = request.POST.get("gender")
+        inst_name = request.POST.get("inst_name")
+        phone = request.POST.get("phone")
+        TeacherProfile.objects.update(
+            first_name=first_name,
+            last_name=last_name,
+            gender=gender,
+            inst_name=inst_name,
+            phone=phone,
+        )
+        print(first_name,last_name,gender,inst_name,phone)
+        return redirect("teacher_profile")
+    context = {"teacher": teacher}
+    return render(request, "website/teacher_profile.html", context)

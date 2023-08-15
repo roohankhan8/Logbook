@@ -25,6 +25,19 @@
         <br />
         <!--  logbook box -->
         <div class="dropdown">
+          {% if student.first_name == '' %}
+          <button
+            class="btn btn-outline-sucess dropdown-toggle"
+            type="button"
+            id="moreOptionsDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            disabled
+          >
+            Logbook
+          </button>
+          {% else %}
           <button
             class="btn btn-outline-sucess dropdown-toggle"
             type="button"
@@ -35,6 +48,7 @@
           >
             Logbook
           </button>
+          {% endif %}
           <div
             class="dropdown-menu dropdown-menu-right"
             aria-labelledby="moreOptionsDropdown"
@@ -57,6 +71,19 @@
         <br />
         <!-- presentation box -->
         <div class="dropdown">
+          {% if student.first_name == '' %}
+          <button
+            class="btn btn-outline-sucess dropdown-toggle"
+            type="button"
+            id="moreOptionsDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            disabled
+          >
+            Presentation
+          </button>
+          {% else %}
           <button
             class="btn btn-outline-sucess dropdown-toggle"
             type="button"
@@ -67,6 +94,7 @@
           >
             Presentation
           </button>
+          {% endif %}
           <div
             class="dropdown-menu dropdown-menu-right"
             aria-labelledby="moreOptionsDropdown"
@@ -143,7 +171,11 @@
           <br />
           <!-- Teams -->
           <div class="btn-group">
-            <button type="button" class="btn btn-outline-sucess">Teams</button>
+            {% if student.first_name == '' %}
+            <button type="button" class="btn btn-outline-sucess" disabled>Teams</button>
+            {% else %}
+            <button type="button" class="btn btn-outline-sucess" disabled>Teams</button>
+            {% endif %}
           </div>
         </div>
       </a>

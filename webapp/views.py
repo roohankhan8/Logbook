@@ -107,7 +107,9 @@ def logout_view(request):
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
 def student_portal(request):
-    return render(request, "website/student_portal.html")
+    student = request.user.studentprofile
+    context = {"student": student}
+    return render(request, "website/student_portal.html",context)
 
 
 @login_required(login_url="/")

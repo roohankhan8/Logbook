@@ -108,7 +108,8 @@ def student_portal(request):
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def student_profile(request):
+def student_profile(request,pk):
+    student=StudentProfile.objects.get(username=pk)
     if request.method == "POST":
         first_name = request.POST.get("f_name")
         last_name = request.POST.get("l_name")
@@ -130,7 +131,8 @@ def student_profile(request):
             first_name, last_name, gender, excited_about, free_time, fav_book, fav_food
         )
         return redirect("student_portal")
-    return render(request, "website/student_profile.html")
+    context={'student':student}
+    return render(request, "website/student_profile.html",context)
 
 
 @login_required(login_url="/")

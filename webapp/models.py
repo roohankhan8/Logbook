@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import Group, User
-from django.db.models.signals import post_save
 # Create your models here.
 
 student_group = Group.objects.get(name="Students")
@@ -42,3 +41,16 @@ class TeacherProfile(models.Model):
     def __str__(self):
         return self.username
     
+from django.utils.crypto import get_random_string
+
+class Logbook(models.Model):
+    creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    code = models.CharField(max_length=8, unique=True)
+    # Add other fields as needed
+    title=models.CharField(max_length=20,null=True)
+    def save(self, *args, **kwargs):
+        if not self.code:
+            self.code = get_random_string(length=8)
+        super().save(*args, **kwargs)
+    def __str__(self):
+        return self.code

@@ -1,9 +1,11 @@
-from django.forms import ModelForm
-from django.contrib.auth.forms import UserCreationForm
+# forms.py
 from django import forms
-from django.contrib.auth.models import User
+from .models import *
 
-class CreateUserForm(UserCreationForm):
+class CreateLogbookForm(forms.ModelForm):
     class Meta:
-        model=User
-        fields=['username','email','password1','password2']
+        model = Logbook
+        fields = ['title']  # Add fields you want the user to input
+
+class JoinLogbookForm(forms.Form):
+    logbook_code = forms.CharField(max_length=8)

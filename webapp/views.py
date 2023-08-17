@@ -8,10 +8,9 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .decorators import *
 
-
 # Create your views here.
 
-#========================SIGNUP SIGNIN VIEWS========================
+# ========================SIGNUP SIGNIN VIEWS========================
 @unauthenticated
 def register(request):
     if request.method == "POST":
@@ -59,6 +58,7 @@ def register(request):
             messages.error(request, "Username already taken!")
     return render(request, "website/register.html")
 
+
 @unauthenticated
 def loginPage(request):
     if request.method == "POST":
@@ -83,6 +83,7 @@ def loginPage(request):
             messages.error(request, "Username or Password is incorrect!")
     return render(request, "website/login.html")
 
+
 @unauthenticated
 def check_email_exists(request):
     if request.method == "POST":
@@ -103,13 +104,52 @@ def logout_view(request):
     return redirect("/")
 
 
+# views.py
+from .forms import *
+
+
+@login_required(login_url="/")
+@allowed_user(allowed_roles=["Students"])
+def create_logbook(request):
+    if request.method == "POST":
+        form = CreateLogbookForm(request.POST)
+        if form.is_valid():
+            logbook = form.save(commit=False)
+            logbook.creator = request.user  # Assuming you have authentication set up
+            logbook.save()
+            return redirect("course_outline", logbook.code)
+    else:
+        form = CreateLogbookForm()
+    context = {"form": form}
+    return render(request, "website/create_logbook.html", context)
+
+
+@login_required(login_url="/")
+@allowed_user(allowed_roles=["Students"])
+def join_logbook(request):
+    if request.method == "POST":
+        form = JoinLogbookForm(request.POST)
+        if form.is_valid():
+            logbook_code = form.cleaned_data["logbook_code"]
+            try:
+                logbook = Logbook.objects.get(code=logbook_code)
+                # Add logic to add the current user to the logbook participants
+                return redirect("course_outline", logbook.id)
+            except Logbook.DoesNotExist:
+                form.add_error("logbook_code", "Logbook with this code does not exist.")
+    else:
+        form = JoinLogbookForm()
+    context = {"form": form}
+    return render(request, "website/join_logbook.html", context)
+
+
 # ========================STUDENTS========================
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
 def student_portal(request):
     student = request.user.studentprofile
     context = {"student": student}
-    return render(request, "website/student_portal.html",context)
+    return render(request, "website/student_portal.html", context)
 
 
 @login_required(login_url="/")
@@ -139,86 +179,107 @@ def student_profile(request):
 
 
 @login_required(login_url="/")
-def course_outline(request):
-    return render(request, "website/outline.html")
+@allowed_user(allowed_roles=["Students"])
+def course_outline(request,pk):
+    logbook=Logbook.objects.get(code=pk)
+    context={'logbook':logbook}
+    return render(request, "website/outline.html",context)
+
 
 @login_required(login_url="/")
-def record_of_invention(request):
+@allowed_user(allowed_roles=["Students"])
+def record_of_invention(request,pk):
     return render(request, "website/record_of_invention.html")
 
-@login_required(login_url="/")
-def statement_of_originality(request):
-    return render(request, "website/statement_of_originality.html")
 
 @login_required(login_url="/")
-def flowchart(request):
+@allowed_user(allowed_roles=["Students"])
+def statement_of_originality(request,pk):
+    return render(request, "website/statement_of_originality.html")
+
+
+@login_required(login_url="/")
+@allowed_user(allowed_roles=["Students"])
+def flowchart(request,pk):
     return render(request, "website/flowchart.html")
+
 
 # ========================STEPS========================
 @login_required(login_url="/")
-def step_1(request):
-    if request.method=='POST':
-        return redirect('step_2')
+@allowed_user(allowed_roles=["Students"])
+def step_1(request,pk):
+    if request.method == "POST":
+        return redirect("step_2")
     return render(request, "website/step_1.html")
 
 
 @login_required(login_url="/")
-def step_2(request):
-    if request.method=='POST':
-        return redirect('step_3')
+@allowed_user(allowed_roles=["Students"])
+def step_2(request,pk):
+    if request.method == "POST":
+        return redirect("step_3")
     return render(request, "website/step_2.html")
 
 
 @login_required(login_url="/")
-def step_3(request):
-    if request.method=='POST':
-        return redirect('step_4')
+@allowed_user(allowed_roles=["Students"])
+def step_3(request,pk):
+    if request.method == "POST":
+        return redirect("step_4")
     return render(request, "website/step_3.html")
 
 
 @login_required(login_url="/")
-def step_4(request):
-    if request.method=='POST':
-        return redirect('step_5')
+@allowed_user(allowed_roles=["Students"])
+def step_4(request,pk):
+    if request.method == "POST":
+        return redirect("step_5")
     return render(request, "website/step_4.html")
 
 
 @login_required(login_url="/")
-def step_5(request):
-    if request.method=='POST':
-        return redirect('step_6')
+@allowed_user(allowed_roles=["Students"])
+def step_5(request,pk):
+    if request.method == "POST":
+        return redirect("step_6")
     return render(request, "website/step_5.html")
 
 
 @login_required(login_url="/")
-def step_6(request):
-    if request.method=='POST':
-        return redirect('step_7')
+@allowed_user(allowed_roles=["Students"])
+def step_6(request,pk):
+    if request.method == "POST":
+        return redirect("step_7")
     return render(request, "website/step_6.html")
 
 
 @login_required(login_url="/")
-def step_7(request):
-    if request.method=='POST':
-        return redirect('step_8')
+@allowed_user(allowed_roles=["Students"])
+def step_7(request,pk):
+    if request.method == "POST":
+        return redirect("step_8")
     return render(request, "website/step_7.html")
 
 
 @login_required(login_url="/")
-def step_8(request):
-    if request.method=='POST':
-        return redirect('survey')
+@allowed_user(allowed_roles=["Students"])
+def step_8(request,pk):
+    if request.method == "POST":
+        return redirect("survey")
     return render(request, "website/step_8.html")
 
 
 @login_required(login_url="/")
-def survey(request):
+@allowed_user(allowed_roles=["Students"])
+def survey(request,pk):
     return render(request, "website/survey.html")
 
 
 @login_required(login_url="/")
-def logbook_complete(request):
+@allowed_user(allowed_roles=["Students"])
+def logbook_complete(request,pk):
     return render(request, "website/logbook_complete.html")
+
 
 # ========================TEAMS========================
 @login_required(login_url="/")
@@ -229,6 +290,7 @@ def team_portal(request):
 @login_required(login_url="/")
 def view_team(request):
     return render(request, "website/view_team.html")
+
 
 # ========================TEACHERS========================
 @login_required(login_url="/")
@@ -248,7 +310,7 @@ def teacher_profile(request):
             inst_name=inst_name,
             phone=phone,
         )
-        print(first_name,last_name,gender,inst_name,phone)
+        print(first_name, last_name, gender, inst_name, phone)
         return redirect("teacher_profile")
     context = {"teacher": teacher}
     return render(request, "website/teacher_profile.html", context)

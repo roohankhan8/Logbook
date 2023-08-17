@@ -12,6 +12,7 @@
     <!-- Question Answeer Box -->
     <div class="QA_container mb-1 p-5">
       <form method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label for="formFileMultiple" class="form-label"
             >4.1 In as much detail as possible, draw a blue print/ model of how
@@ -78,7 +79,7 @@
       <div class="row">
         <div class="col-6 d-flex align-items-center justify-content-start">
           <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'step_3' %}">Back</a>
+            <a href="{% url 'step_3' logbook.code %}">Back</a>
           </button>
           {% include 'website/buttons.html' %}
     <!-- Buttons ends--></form>

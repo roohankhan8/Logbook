@@ -12,6 +12,7 @@
     <!-- Question Answeer Box -->
     <div class="QA_container mb-1 p-5">
       <form method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label class="form-label" for="inputlg"
             >5.1 Talk to experts (engineers, scientists, entrepreneurs) to: (a)
@@ -75,7 +76,7 @@
       <div class="row">
         <div class="col-6 d-flex align-items-center justify-content-start">
           <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'step_4' %}">Back</a>
+            <a href="{% url 'step_4' logbook.code %}">Back</a>
           </button>
           {% include 'website/buttons.html' %}
     <!-- Buttons ends-->

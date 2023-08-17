@@ -12,16 +12,21 @@
   </head>
 
   <body>
+    <style>
+      #link{
+        color: black;
+      }
+    </style>
     <!-- main header -->
     <div class="header">
-      <div class="logo">
-        <img src="{% static 'images/logbook.png' %}" alt="Logo" width="40PX" height="40px" />
+      <div class="logo"><a href="{% url 'student_portal' %}">
+        <img src="{% static 'images/logbook.png' %}" alt="Logo" width="40PX" height="40px" /></a>
       </div>
       <!-- main header (notification) -->
       <div class="row">
         <div class="d-grid gap-4">
-          <button class="btn btn-light" type="button">Course Outline</button>
-          <button class="btn btn-light" type="button">Take Notes</button>
+          <button class="btn btn-light" type="button"><a href="{% url 'course_outline' %}" id="link">Course Outline</a></button>
+          <button class="btn btn-light" type="button"><a href="" id="link">Take Notes</a></button>
         </div>
         <div>
           <button

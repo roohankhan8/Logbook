@@ -152,7 +152,7 @@ def statement_of_originality(request):
 
 @login_required(login_url="/")
 def flowchart(request):
-    return render(request, "flowchart.html")
+    return render(request, "website/flowchart.html")
 
 # ========================STEPS========================
 @login_required(login_url="/")

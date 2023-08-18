@@ -2,151 +2,202 @@
 {% block title %}Student Portal{% endblock %} 
 {% load static %} 
 {% block content %}
-    <!-------------- navigatio bar start---------- -->
-    <nav class="navbars">
-      <div class="container-fluid-nav text-center">
-        <h3>Student Portal</h3>
+<!-------------- navigatio bar start---------- -->
+<nav class="navbars">
+  <div class="container-fluid-nav text-center">
+    <h3>Student Portal</h3>
+  </div>
+</nav>
+{% include 'website/messages.html' %}
+<!-------------- navigatio bar ends----------------->
+<!-------------- student portion options--------- -->
+<section class="cardsection">
+  <!------------------ logbook option 1-------------------- -->
+  <div class="card">
+    <div>
+      <img
+        src="{% static 'images/logbook.png' %}"
+        class="img-fluid"
+        style="height: 100px"
+        alt="..."
+      />
+    </div>
+    <br />
+    <!--  logbook box -->
+    <div class="dropdown">
+      {% if student.first_name == '' %}
+      <button
+        class="btn btn-outline-sucess dropdown-toggle"
+        type="button"
+        id="moreOptionsDropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        disabled
+      >
+        Logbook
+      </button>
+      {% else %}
+      <button
+        class="btn btn-outline-sucess dropdown-toggle"
+        type="button"
+        id="moreOptionsDropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Logbook
+      </button>
+      {% endif %}
+      <div
+        class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="moreOptionsDropdown"
+      >
+        <a class="dropdown-item" href="{% url 'create_logbook' %}"
+          >Create Logbook</a
+        >
+        <a class="dropdown-item" href="{% url 'join_logbook' %}"
+          >Edit Logbook</a
+        >
       </div>
-    </nav>
-    {% include 'website/messages.html' %}
-    <!-------------- navigatio bar ends----------------->
-    <!-------------- student portion options--------- -->
-    <section class="cardsection">
-      <!------------------ logbook option 1-------------------- -->
-      <div class="card">
-        <div>
-          <img
-            src="{% static 'images/logbook.png' %}"
-            class="img-fluid"
-            style="height: 100px"
-            alt="..."
-          />
-        </div>
-        <br />
-        <!--  logbook box -->
-        <div class="dropdown">
-          <button
-            class="btn btn-outline-sucess dropdown-toggle"
-            type="button"
-            id="moreOptionsDropdown"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Logbook
-          </button>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            aria-labelledby="moreOptionsDropdown"
-          >
-            <a class="dropdown-item" href="#">Create Logbook</a>
-            <a class="dropdown-item" href="#">Edit Logbook</a>
-          </div>
-        </div>
+    </div>
+  </div>
+  <!------------------ presentation option 2--------------------- -->
+  <div class="card">
+    <div>
+      <img
+        src="{% static 'images/presentation.png' %}"
+        class="img-fluid"
+        style="height: 100px"
+        alt="..."
+      />
+    </div>
+    <br />
+    <!-- presentation box -->
+    <div class="dropdown">
+      {% if student.first_name == '' %}
+      <button
+        class="btn btn-outline-sucess dropdown-toggle"
+        type="button"
+        id="moreOptionsDropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        disabled
+      >
+        Presentation
+      </button>
+      {% else %}
+      <button
+        class="btn btn-outline-sucess dropdown-toggle"
+        type="button"
+        id="moreOptionsDropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Presentation
+      </button>
+      {% endif %}
+      <div
+        class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="moreOptionsDropdown"
+      >
+        <a class="dropdown-item" href="#">Upload Video</a>
+        <a class="dropdown-item" href="#">Upload Presentation</a>
       </div>
-      <!------------------ presentation option 2--------------------- -->
-      <div class="card">
-        <div>
-          <img
-            src="{% static 'images/presentation.png' %}"
-            class="img-fluid"
-            style="height: 100px"
-            alt="..."
-          />
-        </div>
-        <br />
-        <!-- presentation box -->
-        <div class="dropdown">
-          <button
-            class="btn btn-outline-sucess dropdown-toggle"
-            type="button"
-            id="moreOptionsDropdown"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Presentation
-          </button>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            aria-labelledby="moreOptionsDropdown"
-          >
-            <a class="dropdown-item" href="#">Upload Video</a>
-            <a class="dropdown-item" href="#">Upload Presentation</a>
-          </div>
-        </div>
+    </div>
+  </div>
+  <!------------------ Tools option 3--------------------- -->
+  <div class="card">
+    <div>
+      <img
+        src="{% static 'images/tool-box (1).png' %}"
+        class="img-fluid"
+        style="height: 100px"
+        alt="..."
+      />
+    </div>
+    <br />
+    <!-- Tools box -->
+    <div class="dropdown">
+      <button
+        class="btn btn-outline-sucess dropdown-toggle"
+        type="button"
+        id="moreOptionsDropdown"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Tools
+      </button>
+      <div
+        class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="moreOptionsDropdown"
+      >
+        <a class="dropdown-item" href="#">Fishbone</a>
+        <a class="dropdown-item" href="#">Brainstrome</a>
       </div>
-      <!------------------ Tools option 3--------------------- -->
-      <div class="card">
-        <div>
-          <img
-            src="{% static 'images/tool-box (1).png' %}"
-            class="img-fluid"
-            style="height: 100px"
-            alt="..."
-          />
-        </div>
-        <br />
-        <!-- Tools box -->
-        <div class="dropdown">
-          <button
-            class="btn btn-outline-sucess dropdown-toggle"
-            type="button"
-            id="moreOptionsDropdown"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Tools
-          </button>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            aria-labelledby="moreOptionsDropdown"
-          >
-            <a class="dropdown-item" href="#">Fishbone</a>
-            <a class="dropdown-item" href="#">Brainstrome</a>
-          </div>
-        </div>
+    </div>
+  </div>
+  <!------------------ Profile option 4-------------------- -->
+  <a href="{% url 'student_profile' %}">
+    <div class="card">
+      <div>
+        <img
+          src="{% static 'images/profile-user.png' %}"
+          class="img-fluid"
+          style="height: 100px"
+          alt="..."
+        />
       </div>
-      <!------------------ Profile option 4-------------------- -->
-      <a href="{% url 'student_profile' user.username %}">
-        <div class="card">
-          <div>
-            <img
-              src="{% static 'images/profile-user.png' %}"
-              class="img-fluid"
-              style="height: 100px"
-              alt="..."
-            />
-          </div>
-          <br />
-          <!--  Profile -->
-          <div class="btn-group">
-            <button type="button" class="btn btn-outline-sucess">
-              Profile
-            </button>
-          </div>
-        </div>
-      </a>
-      <!------------------ option 5--------------------- -->
-      <a href="{% url 'team_portal' %}">
-        <div class="card">
-          <div>
-            <img
-              src="{% static 'images/group.png' %}"
-              class="img-fluid"
-              style="height: 100px"
-              alt="..."
-            />
-          </div>
-          <!-- </div> -->
-          <br />
-          <!-- Teams -->
-          <div class="btn-group">
-            <button type="button" class="btn btn-outline-sucess">Teams</button>
-          </div>
-        </div>
-      </a>
-    </section>
-    <!------------------ end--------------------- -->
-    {% endblock %}
+      <br />
+      <!--  Profile -->
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-sucess">Profile</button>
+      </div>
+    </div>
+  </a>
+  <!------------------ option 5--------------------- -->
+  {% if student.first_name == '' %}
+  <a href="#">
+    <div class="card">
+      <div>
+        <img
+          src="{% static 'images/group.png' %}"
+          class="img-fluid"
+          style="height: 100px"
+          alt="..."
+        />
+      </div>
+      <!-- </div> -->
+      <br />
+      <!-- Teams -->
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-sucess" disabled>Teams</button>
+      </div>
+    </div>
+  </a>
+  {% else %} 
+  <a href="{% url 'team_portal' %}">
+    <div class="card">
+      <div>
+        <img
+          src="{% static 'images/group.png' %}"
+          class="img-fluid"
+          style="height: 100px"
+          alt="..."
+        />
+      </div>
+      <!-- </div> -->
+      <br />
+      <!-- Teams -->
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-sucess">Teams</button>
+      </div>
+    </div>
+  </a>
+  {% endif %}
+</section>
+<!------------------ end--------------------- -->
+{% endblock %}

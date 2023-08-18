@@ -98,18 +98,9 @@
       <div class="row">
         <div class="col-6 d-flex align-items-center justify-content-start">
           <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'step_8' %}">Back</a>
+            <a href="{% url 'step_8' logbook.code %}">Back</a>
           </button>
           <button class="btn btn-success mr-1" type="submit">Submit</button>
-        </div>
-        <div class="col-6 d-flex align-items-center justify-content-end">
-          <button class="btn btn-success mr-1" type="button">Preview</button>
-          <button class="btn btn-success mr-1" type="button">Save</button>
-          <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'logbook_complete' %}">Next</a>
-          </button>
-        </div>
-      </div>
-    </div>
+          {% include 'website/buttons.html' %}
     <!-- Buttons ends-->
     {% endblock %}

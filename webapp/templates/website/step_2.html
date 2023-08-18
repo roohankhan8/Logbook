@@ -11,7 +11,8 @@
     <!-- second header ends  -->
     <!-- Question Answeer Box -->
     <div class="QA_container mb-1 p-5">
-      <form>
+      <form method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label class="form-label" for="inputlg"
             >2.1 Talk to others and understand all aspects of the problems. Now,
@@ -49,7 +50,6 @@
             required
           ></textarea>
         </div>
-      </form>
       <div class="form-group">
         <label class="form-label" for="inputlg"
           >2.3 Very specifically, list what do you want your solution to
@@ -67,27 +67,17 @@
           required
         ></textarea>
       </div>
-      <div></div>
-    </div>
-    <!-- Question Answeer Box  Ends-->
-    <!-- Buttons-->
+      <!-- Buttons-->
 
     <div class="container">
       <div class="row">
         <div class="col-6 d-flex align-items-center justify-content-start">
           <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'step_1' %}">Back</a>
+            <a href="{% url 'step_1' logbook.code %}">Back</a>
           </button>
-          <button class="btn btn-success mr-1" type="submit">Submit</button>
-        </div>
-        <div class="col-6 d-flex align-items-center justify-content-end">
-          <button class="btn btn-success mr-1" type="button">Preview</button>
-          <button class="btn btn-success mr-1" type="button">Save</button>
-          <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'step_3' %}">Next</a>
-          </button>
-        </div>
-      </div>
-    </div>
+          {% include 'website/buttons.html' %}
     <!-- Buttons ends-->
+    </form></div>
+    <!-- Question Answeer Box  Ends-->
+    
     {% endblock %}

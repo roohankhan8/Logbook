@@ -11,7 +11,8 @@
 <!-- second header ends  -->
 <!-- Question Answeer Box -->
 <div class="QA_container mb-1 p-5">
-  <form>
+  <form method="post">
+    {% csrf_token %}
     <div class="form-group">
       <label class="form-label" for="inputlg">
         7.1 Test your prototype on different parameters and note the extent to
@@ -32,8 +33,8 @@
       </label>
       <label class="form-label" for="inputlg" style="color: green">
         At this point, consider if you need to go back
-        <a href="{% url 'step_4' %}">TO THE DRAWING BOARD (Step 4)</a> or
-        <a href="{% url 'step_6' %}">OVER TO THE LAB(Step 6)</a> for some revisions to
+        <a href="{% url 'step_4' logbook.code %}">TO THE DRAWING BOARD (Step 4)</a> or
+        <a href="{% url 'step_6' logbook.code %}">OVER TO THE LAB(Step 6)</a> for some revisions to
         the prototype. Keep creating new versions of ModelI1…, ProtoI as needed
         so you can record all the iterations you did. Keep making changes to
         your prototype and try new iterations until your invention works as
@@ -71,27 +72,18 @@
         ></textarea>
       </div>
     </div>
-  </form>
-</div>
-<!-- Question Answeer Box  Ends-->
-<!-- Buttons-->
+    <!-- Buttons-->
 
 <div class="container">
   <div class="row">
     <div class="col-6 d-flex align-items-center justify-content-start">
       <button class="btn btn-success mr-1" type="button">
-        <a href="{% url 'step_6' %}">Back</a>
+        <a href="{% url 'step_6' logbook.code %}">Back</a>
       </button>
-      <button class="btn btn-success mr-1" type="submit">Submit</button>
-    </div>
-    <div class="col-6 d-flex align-items-center justify-content-end">
-      <button class="btn btn-success mr-1" type="button">Preview</button>
-      <button class="btn btn-success mr-1" type="button">Save</button>
-      <button class="btn btn-success mr-1" type="button">
-        <a href="{% url 'step_8' %}">Next</a>
-      </button>
-    </div>
-  </div>
-</div>
+      {% include 'website/buttons.html' %}
 <!-- Buttons ends-->
+  </form>
+</div>
+<!-- Question Answeer Box  Ends-->
+
 {% endblock %}

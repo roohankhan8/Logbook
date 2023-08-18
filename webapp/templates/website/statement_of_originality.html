@@ -1,0 +1,184 @@
+{% extends 'website/header_2.html' %} 
+{% block title %}Course Outline{% endblock %} 
+{% load static %} 
+{% block content %}
+<!-- second header  -->
+<nav class="navbars">
+  <div class="container-fluid-nav text-center">
+    <h5>STATEMENT OF ORIGINALITY</h5>
+  </div>
+</nav>
+<!-- second header ends  -->
+<!-- Question Answeer Box -->
+
+<div class="QA_container mb-1 p-5">
+  <h1
+    class="mb-3"
+    style="
+      font-family: 'Times New Roman', Times, serif;
+      color: green;
+      text-align: center;
+      font-size: 1.5em;
+    "
+  >
+    <i
+      ><b
+        >We certify that to the best of our knowledge, the ideas and the work
+        described in this log have resulted from the work of the team signing
+        off from here.</b
+      ></i
+    >
+  </h1>
+  <br />
+  <br />
+  <form>
+    <div class="form-group">
+      <div class="row mt-2">
+        <div class="col-md-6">
+          <label class="labels">
+            <h1
+              class="mb-3"
+              style="
+                font-family: 'Times New Roman', Times, serif;
+                color: dark green;
+                text-align: center;
+                font-size: 2em;
+              "
+            >
+              <b>The Inventor</b>
+            </h1>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter here"
+            value=""
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label class="labels">
+            <h1
+              class="mb-3"
+              style="
+                font-family: 'Times New Roman', Times, serif;
+                color: dark green;
+                text-align: center;
+                font-size: 2em;
+              "
+            >
+              <b>School Name & Grade</b>
+            </h1>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            value=""
+            placeholder="Enter here"
+          />
+        </div>
+
+        <div class="col-md-12">
+          <br />
+          <textarea
+            class="form-control"
+            rows="5"
+            style="height: 100%; font-size: 19px"
+            placeholder="Input text here"
+            required
+          ></textarea>
+        </div>
+
+        <div class="col-md-6">
+          <label class="labels">
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1
+              class="mb-3"
+              style="
+                font-family: 'Times New Roman', Times, serif;
+                color: dark green;
+                text-align: center;
+                font-size: 2em;
+              "
+            >
+              <b>Signature</b>
+            </h1>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Member 1"
+            value=""
+          />
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Member 2"
+            value=""
+          />
+        </div>
+        <div class="col-md-6">
+          <label class="labels">
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1
+              class="mb-3"
+              style="
+                font-family: 'Times New Roman', Times, serif;
+                color: white;
+                text-align: center;
+                font-size: 2em;
+              "
+            >
+              <b>&nbsp;</b>
+            </h1>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            value=""
+            placeholder="Member 3"
+          />
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Member 4"
+            value=""
+          />
+        </div>
+      </div>
+
+      <div></div>
+    </div>
+
+    <!-- Question Answeer Box  Ends-->
+    <!-- Buttons-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-start">
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'record_of_invention' logbook.code %}">Back</a>
+          </button>
+          <button class="btn btn-success mr-1" type="submit">Submit</button>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-end">
+          <button class="btn btn-success mr-1" type="button">Preview</button>
+          <button class="btn btn-success mr-1" type="button">Save</button>
+          <button class="btn btn-success mr-1" type="button">
+            <a href="{% url 'flowchart' logbook.code %}">Next</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Buttons ends-->
+{% endblock %}

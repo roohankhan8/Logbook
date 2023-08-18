@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import Group, User
-from django.db.models.signals import post_save
 # Create your models here.
 
 student_group = Group.objects.get(name="Students")
@@ -13,16 +12,45 @@ admin_group = Group.objects.get(name="Admins")
 class StudentProfile(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     username=models.CharField(max_length=20,null=True)
-    email = models.CharField(max_length=20, null=True)
+    email = models.CharField(max_length=200, null=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     gender = models.CharField(max_length=20)
-    excited_about = models.CharField(max_length=200, null=True, blank=True)
-    free_time = models.CharField(max_length=200, null=True, blank=True)
-    fav_book = models.CharField(max_length=200, null=True, blank=True)
-    fav_food = models.CharField(max_length=200, null=True, blank=True)
+    excited_about = models.CharField(max_length=200, default='')
+    free_time = models.CharField(max_length=200, default='')
+    fav_book = models.CharField(max_length=200, default='')
+    fav_food = models.CharField(max_length=200, default='')
     profile_pic=models.ImageField(default='profilepics/images.png' ,null=True, blank=True)
     data_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.email)
+        return self.username
+    
+class TeacherProfile(models.Model):
+    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+    username=models.CharField(max_length=20,null=True)
+    email = models.CharField(max_length=20, null=True)
+    first_name = models.CharField(max_length=20,null=True)
+    last_name = models.CharField(max_length=20,null=True)
+    gender = models.CharField(max_length=20,null=True)
+    inst_name = models.CharField(max_length=200, null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True)
+    profile_pic=models.ImageField(default='profilepics/images.png' ,null=True, blank=True)
+    data_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.username
+    
+from django.utils.crypto import get_random_string
+
+class Logbook(models.Model):
+    creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    code = models.CharField(max_length=8, unique=True)
+    # Add other fields as needed
+    title=models.CharField(max_length=20,null=True)
+    def save(self, *args, **kwargs):
+        if not self.code:
+            self.code = get_random_string(length=8)
+        super().save(*args, **kwargs)
+    def __str__(self):
+        return self.code

@@ -1,3 +1,5 @@
 /.vscode
 /env
 /extra.txt
+logbook/__pycache__
+webapp/__pycache__

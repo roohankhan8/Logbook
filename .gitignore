@@ -1,6 +1,6 @@
 /.vscode
 /env
 /extra.txt
-/logbook/__pycache__
-/webapp/__pycache__
+logbook/__pycache__
+webapp/__pycache__
 /1.txt

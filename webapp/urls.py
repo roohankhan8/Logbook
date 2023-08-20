@@ -15,7 +15,7 @@ urlpatterns = [
     path("student_profile/", views.student_profile, name="student_profile"),
 
     #LOGBOOK URLS
-    path("create_logbook/", views.create_logbook, name="create_logbook"),
+    # path("create_logbook/", views.create_logbook, name="create_logbook"),
     path("join_logbook/", views.join_logbook, name="join_logbook"),
     path("course_outline/<str:pk>/", views.course_outline, name="course_outline"),
     path("record_of_invention/<str:pk>/", views.record_of_invention, name="record_of_invention"),

@@ -108,20 +108,20 @@ def logout_view(request):
 from .forms import *
 
 
-@login_required(login_url="/")
-@allowed_user(allowed_roles=["Students"])
-def create_logbook(request):
-    if request.method == "POST":
-        form = CreateLogbookForm(request.POST)
-        if form.is_valid():
-            logbook = form.save(commit=False)
-            logbook.creator = request.user  # Assuming you have authentication set up
-            logbook.save()
-            return redirect("course_outline", logbook.code)
-    else:
-        form = CreateLogbookForm()
-    context = {"form": form}
-    return render(request, "website/create_logbook.html", context)
+# @login_required(login_url="/")
+# @allowed_user(allowed_roles=["Students"])
+# def create_logbook(request):
+#     if request.method == "POST":
+#         form = CreateLogbookForm(request.POST)
+#         if form.is_valid():
+#             logbook = form.save(commit=False)
+#             logbook.creator = request.user  # Assuming you have authentication set up
+#             logbook.save()
+#             return redirect("course_outline", logbook.code)
+#     else:
+#         form = CreateLogbookForm()
+#     context = {"form": form}
+#     return render(request, "website/create_logbook.html", context)
 
 
 @login_required(login_url="/")
@@ -148,7 +148,17 @@ def join_logbook(request):
 @allowed_user(allowed_roles=["Students"])
 def student_portal(request):
     student = request.user.studentprofile
-    context = {"student": student}
+    if request.method == "POST":
+        form = CreateLogbookForm(request.POST)
+        if form.is_valid():
+            logbook = form.save(commit=False)
+            logbook.creator = request.user  # Assuming you have authentication set up
+            logbook.save()
+            messages.success(request,'Logbook created')
+            return redirect("course_outline", logbook.code)
+    else:
+        form = CreateLogbookForm()
+    context = {"student": student,"form": form}
     return render(request, "website/student_portal.html", context)
 
 
@@ -198,6 +208,8 @@ def record_of_invention(request,pk):
 @allowed_user(allowed_roles=["Students"])
 def statement_of_originality(request,pk):
     logbook=Logbook.objects.get(code=pk)
+    if request.method == "POST":
+        return redirect("flowchart",logbook.code)
     context={'logbook':logbook}
     return render(request, "website/statement_of_originality.html",context)
 

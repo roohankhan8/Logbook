@@ -31,7 +31,8 @@
   </h1>
   <br />
   <br />
-  <form>
+  <form method="post">
+    {% csrf_token %}
     <div class="form-group">
       <div class="row mt-2">
         <div class="col-md-6">
@@ -53,6 +54,7 @@
             class="form-control"
             placeholder="Enter here"
             value=""
+            name="inventor"
           />
         </div>
 
@@ -75,6 +77,7 @@
             class="form-control"
             value=""
             placeholder="Enter here"
+            name="schoolnamegrade"
           />
         </div>
 
@@ -86,6 +89,7 @@
             style="height: 100%; font-size: 19px"
             placeholder="Input text here"
             required
+            name="description"
           ></textarea>
         </div>
 
@@ -112,6 +116,8 @@
             class="form-control"
             placeholder="Member 1"
             value=""
+            name="sig1"
+
           />
           <br />
           <input
@@ -119,6 +125,7 @@
             class="form-control"
             placeholder="Member 2"
             value=""
+            name="sig2"
           />
         </div>
         <div class="col-md-6">
@@ -144,6 +151,7 @@
             class="form-control"
             value=""
             placeholder="Member 3"
+            name="sig3"
           />
           <br />
           <input
@@ -151,6 +159,7 @@
             class="form-control"
             placeholder="Member 4"
             value=""
+            name="sig4"
           />
         </div>
       </div>
@@ -167,17 +176,7 @@
           <button class="btn btn-success mr-1" type="button">
             <a href="{% url 'record_of_invention' logbook.code %}">Back</a>
           </button>
-          <button class="btn btn-success mr-1" type="submit">Submit</button>
-        </div>
-        <div class="col-6 d-flex align-items-center justify-content-end">
-          <button class="btn btn-success mr-1" type="button">Preview</button>
-          <button class="btn btn-success mr-1" type="button">Save</button>
-          <button class="btn btn-success mr-1" type="button">
-            <a href="{% url 'flowchart' logbook.code %}">Next</a>
-          </button>
-        </div>
-      </div>
-    </div>
+          {% include 'website/buttons.html' %}
   </form>
 </div>
 <!-- Buttons ends-->

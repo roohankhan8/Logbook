@@ -35,7 +35,7 @@
               font-size: 19px;
             "
             placeholder="Your Answer"
-            required
+            name="things_enjoyed"
           ></textarea>
         </div>
         <div class="form-group">
@@ -51,7 +51,7 @@
               font-size: 19px;
             "
             placeholder="Your Answer"
-            required
+            name="thanking"
           ></textarea>
         </div>
         <div class="form-group">
@@ -67,7 +67,7 @@
               font-size: 19px;
             "
             placeholder="Your Answer"
-            required
+            name="difficulty"
           ></textarea>
         </div>
         <div></div>
@@ -84,7 +84,7 @@
               font-size: 19px;
             "
             placeholder="Your Answer"
-            required
+            name="future"
           ></textarea>
         </div>
         <div></div>
@@ -100,7 +100,6 @@
           <button class="btn btn-success mr-1" type="button">
             <a href="{% url 'step_8' logbook.code %}">Back</a>
           </button>
-          <button class="btn btn-success mr-1" type="submit">Submit</button>
           {% include 'website/buttons.html' %}
     <!-- Buttons ends-->
     {% endblock %}

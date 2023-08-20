@@ -23,7 +23,7 @@
         class="form-control"
         rows="8"
         placeholder="Your Answer"
-        required
+        name="testing"
       ></textarea>
     </div>
     <div class="form-group">
@@ -35,7 +35,7 @@
         At this point, consider if you need to go back
         <a href="{% url 'step_4' logbook.code %}">TO THE DRAWING BOARD (Step 4)</a> or
         <a href="{% url 'step_6' logbook.code %}">OVER TO THE LAB(Step 6)</a> for some revisions to
-        the prototype. Keep creating new versions of ModelI1…, ProtoI as needed
+        the prototype. Keep creating new versions of Model prototype as needed
         so you can record all the iterations you did. Keep making changes to
         your prototype and try new iterations until your invention works as
         planned.
@@ -45,7 +45,7 @@
         class="form-control"
         rows="8"
         placeholder="Your Answer"
-        required
+        name="invention"
       ></textarea>
     </div>
     <div class="form-group">
@@ -56,7 +56,7 @@
         class="form-control"
         rows="5"
         placeholder="Write here"
-        required
+        name="positive"
       ></textarea>
     </div>
     <div>
@@ -68,7 +68,7 @@
           class="form-control"
           rows="5"
           placeholder="Write here"
-          required
+          name="negative"
         ></textarea>
       </div>
     </div>

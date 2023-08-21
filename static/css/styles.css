@@ -81,7 +81,6 @@ body {
   }
   .left-box {
     height: 0px;
-    overflow: auto;
   }
   .right-box {
     padding: 20px;

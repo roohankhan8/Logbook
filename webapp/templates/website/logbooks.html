@@ -7,16 +7,39 @@
 .code{
     font-size: 0.5em;
 }
+#logbooks{
+  color: darkgreen;
+  text-decoration: none;
+}
+#main-div{
+  display: flex; 
+  justify-content:space-around;
+  }
+@media only screen and (max-width: 768px) {
+  .box-area {
+    margin: 0 10px;
+  }
+  .left-box {
+    height: 0px;
+  }
+  .right-box {
+    padding: 20px;
+  }
+  #main-div{
+    display: block;
+    padding: 2em;
+  }
+}
 </style>
 
-<div class="items-center py-5" style="display: flex; justify-content:space-around">
+<div id="main-div" class="items-center py-5">
   {% if total_logbooks %}
   <ul>
     <h1>Created Logbooks:</h1>
     {% for logbook in logbooks %}
     <li class="px-3">
-      <a href="{% url 'course_outline' logbook.code %}" style="text-decoration: none;">
-        <h1 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h1>
+      <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
+        <h2 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h2>
       </a>
     </li>
     {% endfor %}
@@ -29,8 +52,8 @@
     <h1>Joined Logbooks:</h1>
     {% for logbook in logbooks %}
     <li class="px-3">
-      <a href="{% url 'course_outline' logbook.code %}" style="text-decoration: none;">
-        <h1 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h1>
+      <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
+        <h2 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h2>
       </a>
     </li>
     {% endfor %}
@@ -39,5 +62,4 @@
   <h1>You haven't joined any logbooks</h1>
   {% endif %}
 </div>
-
 {% endblock %}

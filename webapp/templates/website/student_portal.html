@@ -88,45 +88,7 @@
         }
       </style>
     {% include 'website/messages.html' %}
-<!------------------ Profile option 4-------------------- -->
-      <!-- <a href="{% url 'student_profile' %}">
-        <div class="card">
-          <div>
-            <img
-              src="{% static 'images/profile-user.png' %}"
-              class="img-fluid"
-              style="height: 100px"
-              alt="..."
-            />
-          </div>
-          <br /> -->
-          <!--  Profile -->
-          <!-- <div class="btn-group">
-            <button type="button" class="btn btn-outline-sucess">
-              Profile
-            </button>
-          </div>
-        </div>
-      </a> -->
-      <!------------------ option 5--------------------- -->
-      <!-- <a href="{% url 'team_portal' %}">
-        <div class="card">
-          <div>
-            <img
-              src="{% static 'images/group.png' %}"
-              class="img-fluid"
-              style="height: 100px"
-              alt="..."
-            />
-          </div> -->
-          <!-- </div> -->
           <br />
-          <!-- Teams -->
-          <!-- <div class="btn-group">
-            <button type="button" class="btn btn-outline-sucess">Teams</button>
-          </div>
-        </div>
-      </a> -->
       <!-------------- student portion options--------- -->
       <section class="cardsection">
           <!-- Create loogbook -->
@@ -159,6 +121,7 @@
             </button>
           </div>
         </div>
+        <a href="{% url 'logbooks' user.username %}" style="text-decoration: none;">
         <div class="card">
           <div>
             <img src="{% static 'images/view.png' %} " 
@@ -171,7 +134,7 @@
             <button type="button" class="btn btn-outline-sucess ">
              <b> EDIT LOGBOOK</b>
             </button>
-      
+        </div></div></a>
             <!------------------ end--------------------- -->
             <!-- logbook_popup for Create logbook -->
             <div class="logbook_popup" id="logbook_popup">
@@ -180,17 +143,13 @@
                 </button><br>
                 <center>
                   <div class="container">
-                    <!-- <button type="button" 
-                            id="congratulateBtn" 
-                            class="btn btn-outline-success btns w-100">
-                            Create Logbook
-                          </button> -->
                           <h1>Create Logbook</h1>
+                          <br>
                           <form method="post">
                               {% csrf_token %}
-                              {{ form.as_p }}
-                              <br>
-                              <button type="submit">Create Logbook</button>
+                              <h4>Title: </h4>
+                               <h5>{{ form.title }}</h5>
+                              <button type="submit" class="btn text-white" style="background-color: darkgreen;">Create Logbook</button>
                           </form>
                           <br>
                           <br>

@@ -38,8 +38,8 @@
           font-size: 19px;
         "
         placeholder="Your Answer"
-        name="name"
-      ></textarea>
+        name="nameinvention"
+      >{{logbook.nameinvention}}</textarea>
     </div>
     <div class="form-group">
       <label class="form-label" for="inputlg">
@@ -57,7 +57,7 @@
         "
         placeholder="Your Answer"
         name="benefits"
-      ></textarea>
+      >{{logbook.benefits}}</textarea>
     </div>
     <div class="form-group">
       <label class="form-label" for="inputlg"
@@ -75,7 +75,7 @@
         "
         placeholder="Your Answer"
         name="price"
-      ></textarea>
+      >{{logbook.price}}</textarea>
     </div>
     <div class="form-group">
       <label class="form-label" for="inputlg"
@@ -91,7 +91,7 @@
         "
         placeholder="Your Answer"
         name="buy"
-      ></textarea>
+      >{{logbook.buy}}</textarea>
     </div>
     <div class="form-group">
         <label class="form-label" for="inputlg"
@@ -104,7 +104,7 @@
               type="text"
               class="form-control"
               placeholder="Enter age"
-              value=""
+              value="{{logbook.customer_age}}"
               name="customer_age"
             />
           </div>
@@ -114,7 +114,7 @@
               type="text"
               class="form-control"
               placeholder="Enter gender"
-              value=""
+              value="{{logbook.customer_gender}}"
               name="customer_gender"
             />
           </div>
@@ -124,7 +124,7 @@
               type="text"
               class="form-control"
               placeholder="Enter education level:"
-              value=""
+              value="{{logbook.customer_education}}"
               name="customer_education"
             />
           </div>
@@ -134,7 +134,7 @@
               type="text"
               class="form-control"
               placeholder="Enter household size:"
-              value=""
+              value="{{logbook.customer_house}}"
               name="customer_house"
             />
           </div>
@@ -144,7 +144,7 @@
               type="text"
               class="form-control"
               placeholder="Enter marital status:"
-              value=""
+              value="{{logbook.customer_marital}}"
               name="customer_marital"
             />
           </div>
@@ -157,7 +157,7 @@
         rows="3"
         placeholder="Write here"
         name="other_notes"
-      ></textarea>
+      >{{logbook.other_notes}}</textarea>
     </div>
     <!-- Buttons-->
 

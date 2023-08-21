@@ -53,8 +53,9 @@
             type="text"
             class="form-control"
             placeholder="Enter here"
-            value=""
+            value="{{logbook.inventor}}"
             name="inventor"
+            required
           />
         </div>
 
@@ -75,9 +76,10 @@
           <input
             type="text"
             class="form-control"
-            value=""
+            value="{{logbook.schoolnamegrade}}"
             placeholder="Enter here"
             name="schoolnamegrade"
+            required
           />
         </div>
 
@@ -88,9 +90,9 @@
             rows="5"
             style="height: 100%; font-size: 19px"
             placeholder="Input text here"
-            required
             name="description"
-          ></textarea>
+            required
+          >{{logbook.description}}</textarea>
         </div>
 
         <div class="col-md-6">
@@ -115,16 +117,16 @@
             type="text"
             class="form-control"
             placeholder="Member 1"
-            value=""
+            value="{{logbook.sig1}}"
             name="sig1"
-
+            required
           />
           <br />
           <input
             type="text"
             class="form-control"
             placeholder="Member 2"
-            value=""
+            value="{{logbook.sig2}}"
             name="sig2"
           />
         </div>
@@ -149,7 +151,7 @@
           <input
             type="text"
             class="form-control"
-            value=""
+            value="{{logbook.sig3}}"
             placeholder="Member 3"
             name="sig3"
           />
@@ -158,7 +160,7 @@
             type="text"
             class="form-control"
             placeholder="Member 4"
-            value=""
+            value="{{logbook.sig4}}"
             name="sig4"
           />
         </div>

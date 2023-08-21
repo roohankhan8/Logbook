@@ -7,8 +7,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .decorators import *
+from .forms import *
 
 # Create your views here.
+
 
 # ========================SIGNUP SIGNIN VIEWS========================
 @unauthenticated
@@ -104,26 +106,6 @@ def logout_view(request):
     return redirect("/")
 
 
-# views.py
-from .forms import *
-
-
-# @login_required(login_url="/")
-# @allowed_user(allowed_roles=["Students"])
-# def create_logbook(request):
-#     if request.method == "POST":
-#         form = CreateLogbookForm(request.POST)
-#         if form.is_valid():
-#             logbook = form.save(commit=False)
-#             logbook.creator = request.user  # Assuming you have authentication set up
-#             logbook.save()
-#             return redirect("course_outline", logbook.code)
-#     else:
-#         form = CreateLogbookForm()
-#     context = {"form": form}
-#     return render(request, "website/create_logbook.html", context)
-
-
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
 def join_logbook(request):
@@ -154,12 +136,21 @@ def student_portal(request):
             logbook = form.save(commit=False)
             logbook.creator = request.user  # Assuming you have authentication set up
             logbook.save()
-            messages.success(request,'Logbook created')
+            messages.success(request, "Logbook created")
             return redirect("course_outline", logbook.code)
     else:
         form = CreateLogbookForm()
-    context = {"student": student,"form": form}
+    context = {"student": student, "form": form}
     return render(request, "website/student_portal.html", context)
+
+
+@login_required(login_url="/")
+@allowed_user(allowed_roles=["Students"])
+def logbooks(request, pk):
+    logbooks = request.user.logbook_set.all()
+    total_logbooks = logbooks.count() > 0
+    context = {"logbooks": logbooks, "total_logbooks": total_logbooks}
+    return render(request, "website/logbooks.html", context)
 
 
 @login_required(login_url="/")
@@ -190,133 +181,223 @@ def student_profile(request):
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def course_outline(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
-    return render(request, "website/outline.html",context)
+def course_outline(request, pk):
+    logbook = Logbook.objects.get(code=pk)
+    context = {"logbook": logbook}
+    return render(request, "website/outline.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def record_of_invention(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
-    return render(request, "website/record_of_invention.html",context)
+def record_of_invention(request, pk):
+    logbook = Logbook.objects.get(code=pk)
+    context = {"logbook": logbook}
+    return render(request, "website/record_of_invention.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def statement_of_originality(request,pk):
-    logbook=Logbook.objects.get(code=pk)
+def statement_of_originality(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("flowchart",logbook.code)
-    context={'logbook':logbook}
-    return render(request, "website/statement_of_originality.html",context)
+        inventor = request.POST.get("inventor")
+        schoolnamegrade = request.POST.get("schoolnamegrade")
+        description = request.POST.get("description")
+        sig1 = request.POST.get("sig1")
+        sig2 = request.POST.get("sig2")
+        sig3 = request.POST.get("sig3")
+        sig4 = request.POST.get("sig4")
+        Logbook.objects.update(
+            inventor=inventor,
+            schoolnamegrade=schoolnamegrade,
+            description=description,
+            sig1=sig1,
+            sig2=sig2,
+            sig3=sig3,
+            sig4=sig4,
+        )
+        return redirect("flowchart", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/statement_of_originality.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def flowchart(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
-    return render(request, "website/flowchart.html",context)
+def flowchart(request, pk):
+    logbook = Logbook.objects.get(code=pk)
+    context = {"logbook": logbook}
+    return render(request, "website/flowchart.html", context)
 
 
 # ========================STEPS========================
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def step_1(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
+def step_1(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("step_2",logbook.code)
-    return render(request, "website/step_1.html",context)
+        initial_problem = request.POST.get("initial_problem")
+        Logbook.objects.update(
+            initial_problem=initial_problem,
+        )
+        return redirect("step_2", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/step_1.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def step_2(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
+def step_2(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("step_3",logbook.code)
-    return render(request, "website/step_2.html",context)
+        selected_problem = request.POST.get("selected_problem")
+        describe_problem = request.POST.get("describe_problem")
+        specific_sol = request.POST.get("specific_sol")
+        Logbook.objects.update(
+            selected_problem=selected_problem,
+            describe_problem=describe_problem,
+            specific_sol=specific_sol,
+        )
+        return redirect("step_3", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/step_2.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def step_3(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
+def step_3(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("step_4",logbook.code)
-    return render(request, "website/step_3.html",context)
+        factors = request.POST.get("factors")
+        research = request.POST.get("research")
+        Logbook.objects.update(
+            factors=factors,
+            research=research,
+        )
+        return redirect("step_4", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/step_3.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def step_4(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
+def step_4(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("step_5",logbook.code)
-    return render(request, "website/step_4.html",context)
+        blueprint = request.POST.get("blueprint")
+        design_problem = request.POST.get("design_problem")
+        sol_design_problem = request.POST.get("sol_design_problem")
+        green_sol = request.POST.get("green_sol")
+        Logbook.objects.update(
+            blueprint=blueprint,
+            design_problem=design_problem,
+            sol_design_problem=sol_design_problem,
+            green_sol=green_sol,
+        )
+
+        return redirect("step_5", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/step_4.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def step_5(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
+def step_5(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("step_6",logbook.code)
-    return render(request, "website/step_5.html",context)
+        materials = request.POST.get("materials")
+        findings = request.POST.get("findings")
+        credit = request.POST.get("credit")
+        Logbook.objects.update(
+            materials=materials,
+            findings=findings,
+            credit=credit,
+        )
+        return redirect("step_6", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/step_5.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def step_6(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
+def step_6(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("step_7",logbook.code)
-    return render(request, "website/step_6.html",context)
+        prototype = request.POST.get("prototype")
+        prototype_pic = request.POST.get("prototype_pic")
+        notes = request.POST.get("notes")
+        Logbook.objects.update(
+            prototype=prototype,
+            prototype_pic=prototype_pic,
+            notes=notes,
+        )
+        return redirect("step_7", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/step_6.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def step_7(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
+def step_7(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("step_8",logbook.code)
-    return render(request, "website/step_7.html",context)
+        testing = request.POST.get("testing")
+        invention = request.POST.get("invention")
+        positive = request.POST.get("positive")
+        negative = request.POST.get("negative")
+        Logbook.objects.update(
+            testing=testing, invention=invention, positive=positive, negative=negative
+        )
+        return redirect("step_8", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/step_7.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def step_8(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
+def step_8(request, pk):
+    logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        return redirect("survey",logbook.code)
-    return render(request, "website/step_8.html",context)
+        nameinvention = request.POST.get("nameinvention")
+        benefits = request.POST.get("benefits")
+        price = request.POST.get("price")
+        buy = request.POST.get("buy")
+        customer_age = request.POST.get("customer_age")
+        customer_gender = request.POST.get("customer_gender")
+        customer_education = request.POST.get("customer_education")
+        customer_house = request.POST.get("customer_house")
+        customer_marital = request.POST.get("customer_marital")
+        other_notes = request.POST.get("other_notes")
+        Logbook.objects.update(
+            nameinvention=nameinvention,
+            benefits=benefits,
+            price=price,
+            buy=buy,
+            customer_age=customer_age,
+            customer_gender=customer_gender,
+            customer_education=customer_education,
+            customer_house=customer_house,
+            customer_marital=customer_marital,
+            other_notes=other_notes,
+        )
+        return redirect("survey", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/step_8.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def survey(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
-    return render(request, "website/survey.html",context)
+def survey(request, pk):
+    logbook = Logbook.objects.get(code=pk)
+    context = {"logbook": logbook}
+    return render(request, "website/survey.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def logbook_complete(request,pk):
-    logbook=Logbook.objects.get(code=pk)
-    context={'logbook':logbook}
-    return render(request, "website/logbook_complete.html")
+def logbook_complete(request, pk):
+    logbook = Logbook.objects.get(code=pk)
+    context = {"logbook": logbook}
+    return render(request, "website/logbook_complete.html", context)
 
 
 # ========================TEAMS========================

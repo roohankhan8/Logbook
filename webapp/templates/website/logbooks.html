@@ -1,0 +1,29 @@
+{% extends 'website/header.html' %} {% block title %}My Logbooks{% endblock %}
+{% load static %} {% block content %}
+
+<style>
+.title{
+
+}
+.code{
+    font-size: 0.5em;
+}
+</style>
+
+<div style="display: flex; justify-content: center; align-items: center; padding: 5em 0 5em 0;">
+    {% if total_logbooks %}
+  <ul>
+    {% for logbook in logbooks %}
+    <li>
+      <a href="{% url 'course_outline' logbook.code %}" style="text-decoration: none;">
+        <h1 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h1>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <h1>No Logbooks for you</h1>
+  {% endif %}
+</div>
+
+{% endblock %}

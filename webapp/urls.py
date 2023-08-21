@@ -31,7 +31,9 @@ urlpatterns = [
     path("step_7/<str:pk>/", views.step_7, name="step_7"),
     path("step_8/<str:pk>/", views.step_8, name="step_8"),
     path("survey/<str:pk>/", views.survey, name="survey"),
+    path("notes/<str:pk>/", views.notes, name="notes"),
     path("logbook_complete/<str:pk>/", views.logbook_complete, name="logbook_complete"),
+    path("delete_logbook/<str:pk>/", views.delete_logbook, name="delete_logbook"),
 
     #TEAMS URLS
     path("team_portal/", views.team_portal, name="team_portal"),

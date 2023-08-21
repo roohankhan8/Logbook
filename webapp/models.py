@@ -55,7 +55,7 @@ from django.utils.crypto import get_random_string
 class Logbook(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     code = models.CharField(max_length=8, unique=True)
-    # Add other fields as needed
+
     title = models.CharField(max_length=20, null=True)
 
     inventor = models.CharField(max_length=20, default="")
@@ -117,8 +117,16 @@ class Logbook(models.Model):
         max_length=200, default=""
     )
     other_notes = models.CharField(max_length=200, default="")
+    
+    note_title=models.CharField(max_length=20, default="")
+    note_desc=models.CharField(max_length=200, default="")
+    
+    things_enjoyed=models.CharField(max_length=200, default="")
+    thanking=models.CharField(max_length=200, default="")
+    difficulty=models.CharField(max_length=200, default="")
+    future=models.CharField(max_length=200, default="")
 
-    data_created = models.DateTimeField(auto_now_add=True)
+    data_created = models.DateTimeField(default=date.today())
 
     def save(self, *args, **kwargs):
         if not self.code:
@@ -127,14 +135,3 @@ class Logbook(models.Model):
 
     def __str__(self):
         return self.code
-
-
-class Reviews(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    things_enjoyed = models.CharField(max_length=200, null=True, blank=True)
-    thanking = models.CharField(max_length=200, null=True, blank=True)
-    difficulty = models.CharField(max_length=200, null=True, blank=True)
-    future = models.CharField(max_length=200, null=True, blank=True)
-
-    def __str__(self):
-        return self.user.username

@@ -4,32 +4,32 @@
 {% block content %}
 
 <style>
-.code{
+  .code {
     font-size: 0.5em;
-}
-#logbooks{
-  color: darkgreen;
-  text-decoration: none;
-}
-#main-div{
-  display: flex; 
-  justify-content:space-around;
   }
-@media only screen and (max-width: 768px) {
-  .box-area {
-    margin: 0 10px;
+  #logbooks {
+    color: darkgreen;
+    text-decoration: none;
   }
-  .left-box {
-    height: 0px;
+  #main-div {
+    display: flex;
+    justify-content: space-around;
   }
-  .right-box {
-    padding: 20px;
+  @media only screen and (max-width: 768px) {
+    .box-area {
+      margin: 0 10px;
+    }
+    .left-box {
+      height: 0px;
+    }
+    .right-box {
+      padding: 20px;
+    }
+    #main-div {
+      display: block;
+      padding: 2em;
+    }
   }
-  #main-div{
-    display: block;
-    padding: 2em;
-  }
-}
 </style>
 
 <div id="main-div" class="items-center py-5">
@@ -37,23 +37,31 @@
   <ul>
     <h1>Created Logbooks:</h1>
     {% for logbook in logbooks %}
-    <li class="px-3">
+    <form action="{% url 'delete_logbook' logbook.code %}" method="post">
+      {% csrf_token %}
+    <li class="p-3 d-flex justify-content-between">
       <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
-        <h2 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h2>
+        <h3 class="title">
+          {{logbook.title}} <div class="code">{{logbook.code}}</div>
+        </h3>
       </a>
-    </li>
+      
+        <button class="btn btn-danger p-1" type="submit">Delete</button>
+      </li>
+    </form>
     {% endfor %}
   </ul>
   {% else %}
   <h1>You haven't created any logbooks</h1>
-  {% endif %}
-  {% if total_logbooks %}
+  {% endif %} {% if total_logbooks %}
   <ul>
     <h1>Joined Logbooks:</h1>
     {% for logbook in logbooks %}
-    <li class="px-3">
+    <li class="p-3 d-flex justify-content-between">
       <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
-        <h2 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h2>
+        <h3 class="title">
+          {{logbook.title}} <div class="code">{{logbook.code}}</div>
+        </h3>
       </a>
     </li>
     {% endfor %}

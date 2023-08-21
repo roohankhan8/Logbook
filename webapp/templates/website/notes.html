@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Notes</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css"> 
-</head>
-
-<body>
-   <!-- main header -->
-    <div class="header">
-        <div class="logo">
-            <img src="logbook.png" alt="Logo" width="40PX" height="40px"> 
-        </div>      
-    </div> 
-    <!-- second header  -->
-    <nav class="navbars">
+{% extends 'website/header_2.html' %} 
+{% block title %}Course Outline{% endblock %} 
+{% load static %} 
+{% block content %}
+<!-- second header  -->
+<nav class="navbars">
   <div class="container-fluid-nav text-center">
     <h5>Notes</h5>
   </div>
 </nav> 
   <!-- Notes section -->
+  <form action="" method="post">
+    {% csrf_token %}
  <div 
  class="QA_container mb-1 p-5">
     <div 
@@ -29,49 +20,43 @@
         rows="1" 
         style="height:100%; font-size: 19PX;" 
         placeholder="Title" 
-        required></textarea>
+        name="note_title">{{logbook.note_title}}</textarea>
     </div>
     <div 
     class="col-md-12"><br>
-    <textarea 
-    class="form-control" 
+    <textarea
+    class="form-control"
     rows="5" 
     style="height:100%; font-size: 19PX;" 
     placeholder="Note something" 
-    required></textarea>
+    name="note_desc">{{logbook.note_desc}}</textarea>
     </div>
+    <div 
+    class="container"> 
+      <div 
+      class="row">
+        <div 
+        class="col-6 d-flex justify-content-start">
+        <!-- Back button -->
+          <a href="">
+            <button 
+          class="btn btn-success" 
+          type="button">Back</button>
+          </a>
+        </div>
+        <div 
+        class="col-6 d-flex justify-content-end">
+        <!-- Save button -->
+          <button 
+          class="btn btn-success" style="margin: 0 0 0 1em;" 
+          type="submit">Save</button>
+        <!-- Delete button -->
+          <!-- <button 
+          class="btn btn-success" style="margin: 0 0 0 1em;" 
+          type="button">Delete</button> -->
+        </div>
+      </div>
+    </div>
+  </form>
 </div> 
-<!-- Buttons-->
-<div 
-class="container"> 
-  <div 
-  class="row">
-    <div 
-    class="col-6 d-flex justify-content-start">
-    <!-- Back button -->
-      <a href="untitled_notes.html">
-        <button 
-      class="btn btn-success  mr-1" 
-      type="button">Back</button>
-      </a>
-    </div>
-    <div 
-    class="col-6 d-flex justify-content-end">
-    <!-- Save button -->
-      <button 
-      class="btn btn-success  mr-1" 
-      type="button">Save</button>
-    <!-- Delete button -->
-      <button 
-      class="btn btn-success  mr-1" 
-      type="button">Delete</button>
-    </div>
-  </div>
-</div>
-  <!-- Buttons ends-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+{% endblock content %}

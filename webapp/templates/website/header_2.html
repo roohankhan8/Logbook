@@ -26,7 +26,7 @@
         <br />
         <li>
           <div class="iocn-link">
-            <a>
+            <a href="{% url 'course_outline' logbook.code %}">
               <i class="bx bx-book"></i>
               <span class="link_name">Course Outline</span>
             </a>
@@ -66,17 +66,17 @@
         </li>
         <!-- option 2: Notes -->
         <li>
-          <a href="#">
+          <a href="{% url 'notes' logbook.code %}">
             <i class="bx bx-edit"></i>
             <span class="link_name">Notes</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Notes</a></li>
+            <li><a class="link_name" href="{% url 'notes' logbook.code %}">Notes</a></li>
           </ul>
         </li>
         <!-- option 3: Flowchart -->
         <li>
-          <a href="#">
+          <a href="{% url 'flowchart' logbook.code %}">
             <i class="bx bx-sitemap"></i>
             <span class="link_name">Flowchart</span>
           </a>

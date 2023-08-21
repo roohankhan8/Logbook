@@ -14,7 +14,8 @@
       class="QA_container mb-1 p-5"
       style="background-color: rgb(201, 229, 197)"
     >
-      <form>
+      <form method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label class="form-label" for="inputlg"
             ><b
@@ -36,7 +37,7 @@
             "
             placeholder="Your Answer"
             name="things_enjoyed"
-          ></textarea>
+          >{{logbook.things_enjoyed}}</textarea>
         </div>
         <div class="form-group">
           <label class="form-label" for="inputlg"
@@ -52,7 +53,7 @@
             "
             placeholder="Your Answer"
             name="thanking"
-          ></textarea>
+          >{{logbook.thanking}}</textarea>
         </div>
         <div class="form-group">
           <label class="form-label" for="inputlg"
@@ -68,9 +69,8 @@
             "
             placeholder="Your Answer"
             name="difficulty"
-          ></textarea>
+          >{{logbook.difficulty}}</textarea>
         </div>
-        <div></div>
         <div class="form-group">
           <label class="form-label" for="inputlg"
             >D. In the future I would like to...
@@ -85,15 +85,9 @@
             "
             placeholder="Your Answer"
             name="future"
-          ></textarea>
+          >{{logbook.future}}</textarea>
         </div>
-        <div></div>
-      </form>
-    </div>
-
-    <!-- Question Answeer Box  Ends-->
-    <!-- Buttons-->
-
+        <!-- Buttons-->
     <div class="container">
       <div class="row">
         <div class="col-6 d-flex align-items-center justify-content-start">
@@ -102,4 +96,8 @@
           </button>
           {% include 'website/buttons.html' %}
     <!-- Buttons ends-->
+      </form>
+    </div>
+    <!-- Question Answeer Box  Ends-->
+    
     {% endblock %}

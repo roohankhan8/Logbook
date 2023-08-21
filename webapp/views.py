@@ -386,8 +386,29 @@ def step_8(request, pk):
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
+def delete_logbook(request, pk):
+    logbook = Logbook.objects.get(code=pk)
+    if request.method == "POST":
+        logbook.delete()
+        return redirect("logbooks", request.user.username)
+
+
+@login_required(login_url="/")
+@allowed_user(allowed_roles=["Students"])
 def survey(request, pk):
     logbook = Logbook.objects.get(code=pk)
+    if request.method == "POST":
+        things_enjoyed = request.POST.get('things_enjoyed')
+        thanking = request.POST.get('thanking')
+        difficulty = request.POST.get('difficulty')
+        future = request.POST.get('future')
+        Logbook.objects.update(
+            things_enjoyed=things_enjoyed,
+            thanking=thanking,
+            difficulty=difficulty,
+            future=future,
+        )
+        return redirect('logbook_complete',logbook.code)
     context = {"logbook": logbook}
     return render(request, "website/survey.html", context)
 
@@ -398,6 +419,22 @@ def logbook_complete(request, pk):
     logbook = Logbook.objects.get(code=pk)
     context = {"logbook": logbook}
     return render(request, "website/logbook_complete.html", context)
+
+
+@login_required(login_url="/")
+@allowed_user(allowed_roles=["Students"])
+def notes(request, pk):
+    logbook = Logbook.objects.get(code=pk)
+    if request.method == "POST":
+        note_title = request.POST.get("note_title")
+        note_desc = request.POST.get("note_desc")
+        Logbook.objects.update(
+            note_title=note_title,
+            note_desc=note_desc,
+        )
+        return redirect("notes", logbook.code)
+    context = {"logbook": logbook}
+    return render(request, "website/notes.html", context)
 
 
 # ========================TEAMS========================

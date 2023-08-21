@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}step 2{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/QA page style.css' %}" />
+  </head>
+
+  <body>
+    <style>
+      #link{
+        color: black;
+      }
+    </style>
+    <!-- main header -->
+    <div class="header">
+      <div class="logo"><a href="{% url 'student_portal' %}">
+        <img src="{% static 'images/logbook.png' %}" alt="Logo" width="40PX" height="40px" /></a>
+      </div>
+      <!-- main header (notification) -->
+      <div class="row">
+        <div class="d-grid gap-4">
+          <button class="btn btn-light" type="button"><a href="{% url 'course_outline' logbook.code %}" id="link">Course Outline</a></button>
+          <button class="btn btn-light" type="button"><a href="" id="link">Take Notes</a></button>
+        </div>
+        <div>
+          <button
+            class="btn btn-light align-items left"
+            type="button"
+            id="notification"
+          >
+            <img src="{% static 'images/notification.png' %}" alt="notification" height="30" />
+          </button>
+
+          <!-- main header (more button) -->
+        </div>
+        <div class="dropdown">
+          <button
+            class="btn btn-light"
+            type="button"
+            id="moreOptionsDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img src="{% static 'images/rename.png' %}" alt="more" height="30" />
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="moreOptionsDropdown"
+          >
+            <a class="dropdown-item" href="{% url 'student_portal' %}">Student portal</a>
+            <a class="dropdown-item" href="">Preview logbook</a>
+            <a class="dropdown-item" href="">Print logbook</a>
+            <a class="dropdown-item" href="">View notes</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- main header ends -->
+    {% block content %} {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -9,7 +9,6 @@
 body {
   font-family: "Poppins", sans-serif;
   background: #ececec;
-  overflow: hidden;
 }
 .header {
   background-color: ghostwhite;
@@ -82,7 +81,7 @@ body {
   }
   .left-box {
     height: 0px;
-    overflow: hidden;
+    overflow: auto;
   }
   .right-box {
     padding: 20px;
@@ -133,7 +132,6 @@ body {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  overflow: hidden;
   position: absolute;
   top: 0;
   left: 50%;

@@ -24,7 +24,7 @@
     <!-- main header -->
     <div class="header">
       <div class="logo">
-        <a href="{% url 'student_portal' %}">
+        <a href="{% url 'logbook_portal' %}">
           <img
             src="{% static 'images/logbook.png' %}"
             alt="Logo"
@@ -47,35 +47,8 @@
             />
           </button>
         </div>
-        <!-- main header (more button) -->
-        <div class="dropdown">
-          <button
-            class="btn btn-light"
-            type="button"
-            id="moreOptionsDropdown"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <img
-              src="{% static 'images/rename.png' %}"
-              alt="more"
-              height="30"
-            />
-          </button>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            aria-labelledby="moreOptionsDropdown"
-          >
-            <a class="dropdown-item" href="{% url 'student_portal' %}"
-              >Student portal</a
-            >
-            <a class="dropdown-item" href="">Preview logbook</a>
-            <a class="dropdown-item" href="">Print logbook</a>
-            <a class="dropdown-item" href="">View notes</a>
-            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-          </div>
-        </div>
+        <!-- main header (logout button) -->
+        <button class="btn btn-success">Logout Logbook</button>
       </div>
     </div>
     <!-- main header ends -->

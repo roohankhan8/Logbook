@@ -1,20 +1,20 @@
-{% extends 'website/header.html' %} {% block title %}My Logbooks{% endblock %}
-{% load static %} {% block content %}
+{% extends 'website/header.html' %} 
+{% block title %}My Logbooks{% endblock %}
+{% load static %} 
+{% block content %}
 
 <style>
-.title{
-
-}
 .code{
     font-size: 0.5em;
 }
 </style>
 
-<div style="display: flex; justify-content: center; align-items: center; padding: 5em 0 5em 0;">
-    {% if total_logbooks %}
+<div class="items-center py-5" style="display: flex; justify-content:space-around">
+  {% if total_logbooks %}
   <ul>
+    <h1>Created Logbooks:</h1>
     {% for logbook in logbooks %}
-    <li>
+    <li class="px-3">
       <a href="{% url 'course_outline' logbook.code %}" style="text-decoration: none;">
         <h1 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h1>
       </a>
@@ -22,7 +22,21 @@
     {% endfor %}
   </ul>
   {% else %}
-  <h1>No Logbooks for you</h1>
+  <h1>You haven't created any logbooks</h1>
+  {% endif %}
+  {% if total_logbooks %}
+  <ul>
+    <h1>Joined Logbooks:</h1>
+    {% for logbook in logbooks %}
+    <li class="px-3">
+      <a href="{% url 'course_outline' logbook.code %}" style="text-decoration: none;">
+        <h1 class="title">{{logbook.title}} <span class="code">{{logbook.code}}</span></h1>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <h1>You haven't joined any logbooks</h1>
   {% endif %}
 </div>
 

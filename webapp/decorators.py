@@ -6,7 +6,7 @@ def unauthenticated(view_func):
     def wrapper_func(request, *args, **kwargs):
         if request.user.is_authenticated:
             if request.user.groups.filter(name="Students").exists():
-                return redirect("student_portal")
+                return redirect("logbook_portal")
             elif request.user.groups.filter(name="Teachers").exists():
                 return redirect("teacher_profile")
             elif request.user.groups.filter(name="Admins").exists():

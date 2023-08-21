@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     /> -->
-    <title>{% block title %}step 2{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/sidebar_style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <link rel="stylesheet" href="{% static 'css/QA page style.css' %}" />
@@ -116,12 +116,12 @@
         </li>
         <!-- option 7: Exit -->
         <li>
-          <a href="{% url 'student_portal' %}">
+          <a href="{% url 'logbook_portal' %}">
             <i class="bx bx-exit"></i>
             <span class="link_name">Exit</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="{% url 'student_portal' %}">Exit</a></li>
+            <li><a class="link_name" href="{% url 'logbook_portal' %}">Exit</a></li>
           </ul>
         </li>
       </ul>

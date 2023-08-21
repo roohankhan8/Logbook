@@ -11,7 +11,7 @@ urlpatterns = [
     path("logout/", views.logout_view, name="logout"),
 
     #STUDENT'S URLS
-    path("student_portal/", views.student_portal, name="student_portal"),
+    path("logbook_portal/", views.logbook_portal, name="logbook_portal"),
     path("student_profile/", views.student_profile, name="student_profile"),
 
     #LOGBOOK URLS

@@ -15,7 +15,6 @@
 .sidebar .nav-links{
   height: 100%;
   padding: 30px 0 150px 0;
-  overflow: auto;
 }
 .sidebar.close .nav-links{
   overflow: visible;
@@ -130,6 +129,7 @@
 .home-section{
   position: relative;
   height: 100vh;
+  overflow: auto;
   left: 260px;
   width: calc(100% - 260px);
   transition: all 0.5s ease;

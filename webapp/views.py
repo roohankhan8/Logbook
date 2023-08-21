@@ -70,7 +70,7 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             if user.groups.filter(name="Students").exists():
-                return redirect("student_portal")
+                return redirect("logbook_portal")
             elif user.groups.filter(name="Teachers").exists():
                 return redirect("teacher_profile")
             elif user.groups.filter(name="Admins").exists():
@@ -128,7 +128,7 @@ def join_logbook(request):
 # ========================STUDENTS========================
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def student_portal(request):
+def logbook_portal(request):
     student = request.user.studentprofile
     if request.method == "POST":
         form = CreateLogbookForm(request.POST)
@@ -141,7 +141,7 @@ def student_portal(request):
     else:
         form = CreateLogbookForm()
     context = {"student": student, "form": form}
-    return render(request, "website/student_portal.html", context)
+    return render(request, "website/logbook_portal.html", context)
 
 
 @login_required(login_url="/")
@@ -174,7 +174,7 @@ def student_profile(request):
             fav_book=fav_book,
             fav_food=fav_food,
         )
-        return redirect("student_portal")
+        return redirect("logbook_portal")
     context = {"student": student}
     return render(request, "website/student_profile.html", context)
 

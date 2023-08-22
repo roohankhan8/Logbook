@@ -148,8 +148,13 @@ def logbook_portal(request):
 @allowed_user(allowed_roles=["Students"])
 def logbooks(request, pk):
     logbooks = request.user.logbook_set.all()
-    total_logbooks = logbooks.count() > 0
-    context = {"logbooks": logbooks, "total_logbooks": total_logbooks}
+    total_joined_logbooks = 0
+    total_created_logbooks = logbooks.count() > 0
+    context = {
+        "logbooks": logbooks,
+        "total_created_logbooks": total_created_logbooks,
+        "total_joined_logbooks": total_joined_logbooks,
+    }
     return render(request, "website/logbooks.html", context)
 
 
@@ -398,17 +403,17 @@ def delete_logbook(request, pk):
 def survey(request, pk):
     logbook = Logbook.objects.get(code=pk)
     if request.method == "POST":
-        things_enjoyed = request.POST.get('things_enjoyed')
-        thanking = request.POST.get('thanking')
-        difficulty = request.POST.get('difficulty')
-        future = request.POST.get('future')
+        things_enjoyed = request.POST.get("things_enjoyed")
+        thanking = request.POST.get("thanking")
+        difficulty = request.POST.get("difficulty")
+        future = request.POST.get("future")
         Logbook.objects.update(
             things_enjoyed=things_enjoyed,
             thanking=thanking,
             difficulty=difficulty,
             future=future,
         )
-        return redirect('logbook_complete',logbook.code)
+        return redirect("logbook_complete", logbook.code)
     context = {"logbook": logbook}
     return render(request, "website/survey.html", context)
 

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{% block title %}Team dashboard{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <link
       rel="stylesheet"
@@ -34,7 +34,7 @@
       </div>
       <!-- main header (notification) -->
       <div class="row">
-        <div>
+        <!-- <div>
           <button
             class="btn btn-light align-items left"
             type="button"
@@ -46,7 +46,7 @@
               height="30"
             />
           </button>
-        </div>
+        </div> -->
         <!-- main header (logout button) -->
         <button class="btn btn-success"><a href="{% url 'logout' %}" style="text-decoration: none; color: white;">Logout Logbook</a></button>
       </div>

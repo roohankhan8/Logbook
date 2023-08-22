@@ -1,5 +1,5 @@
 {% extends 'website/header.html' %} 
-{% block title %}Student Portal{% endblock %} 
+{% block title %}Logbook Portal{% endblock %} 
 {% load static %} 
 {% block content %}
       <style>
@@ -122,8 +122,8 @@
           </div>
         </div>
         <a href="{% url 'logbooks' user.username %}" style="text-decoration: none;">
-        <div class="card">
-          <div>
+          <div class="card">
+           <div>
             <img src="{% static 'images/view.png' %} " 
                  class="img-fluid" 
                  style="height: 200px;">
@@ -134,7 +134,9 @@
             <button type="button" class="btn btn-outline-sucess ">
              <b> EDIT LOGBOOK</b>
             </button>
-        </div></div></a>
+           </div>
+          </div>
+        </a>
             <!------------------ end--------------------- -->
             <!-- logbook_popup for Create logbook -->
             <div class="logbook_popup" id="logbook_popup">
@@ -190,7 +192,6 @@
               </div>
             </div>
             </center>
-      
             <script>
               let logbook_popup = document.getElementById("logbook_popup");
               let popup = document.getElementById("popup");
@@ -198,7 +199,6 @@
               let logbook_popup1 = document.getElementById("logbook_popup1");
               let popup1 = document.getElementById("popup1");
 
-              const congratulateBtn = document.getElementById("congratulateBtn");
               const messageDiv = document.getElementById("message");
 
               function openlogbook_popup() {
@@ -232,15 +232,5 @@
                   logbook_popup1.style.display = "none"; // Hide the logbook_popup after animation
                 }, 300);
               }
-              //   congratulateBtn.addEventListener("click", () => {
-              //     messageDiv.classList.remove("hidden");
-              //   });
-              //  congratulateBtn.addEventListener("click", () => {
-              //     messageDiv.classList.remove("hidden");
-              //     setTimeout(() => {
-              //       messageDiv.classList.add("hidden");
-              //     }, 5000); // Hide the message after 5 seconds
-              //   });
-
             </script>   
     {% endblock %}

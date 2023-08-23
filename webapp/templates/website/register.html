@@ -47,14 +47,17 @@
             <div class="header-text mb-4">
               <center><h1>Create New Account</h1></center>
               <br />
-              
             </div>
             <!------------------ ------ Sign In info-------------------- ------->
             {% include 'website/messages.html' %}
             <form method="post">
               {% csrf_token %}
               <div class="header-text mb-4">
-                <select class="form-select" aria-label="Default select example" name="category">
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  name="category"
+                >
                   <option selected value="student">Student</option>
                   <option value="teacher">Teacher</option>
                   <option value="admin">Admin</option>
@@ -98,8 +101,9 @@
                   title="Show password"
                 ></i>
               </div>
-              <small style="color: red; font-size: 10px;"
-                >must be 8 characters long and contain capital, small letters, numbers</small
+              <small style="color: red; font-size: 10px"
+                >must be 8 characters long and contain capital, small letters,
+                numbers</small
               >
               <div class="input-group mb-1">
                 <input

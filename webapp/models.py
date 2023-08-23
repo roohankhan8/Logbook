@@ -1,7 +1,7 @@
 from datetime import date
 from django.db import models
 from django.contrib.auth.models import Group, User
-
+from django.utils import timezone
 # Create your models here.
 
 student_group = Group.objects.get(name="Students")
@@ -126,7 +126,7 @@ class Logbook(models.Model):
     difficulty=models.CharField(max_length=200, default="")
     future=models.CharField(max_length=200, default="")
 
-    data_created = models.DateTimeField(default=date.today())
+    data_created = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.code:

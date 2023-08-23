@@ -1,7 +1,5 @@
-{% extends 'website/header.html' %} 
-{% block title %}My Logbooks{% endblock %}
-{% load static %} 
-{% block content %}
+{% extends 'website/header.html' %} {% block title %}My Logbooks{% endblock %}
+{% load static %} {% block content %}
 <style>
   .code {
     font-size: 0.5em;
@@ -117,81 +115,102 @@
 
 <div id="main-div" class="items-center py-5">
   <div>
-  <h1>Created Logbooks:</h1>
-  {% if total_created_logbooks %}
-  <ul>
-    {% for logbook in logbooks %}
-    <li class="p-3 d-flex justify-content-between">
-      <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
-        <h3 class="title">
-          {{logbook.title}}
-          <div class="code">{{logbook.code}}</div>
-        </h3>
-      </a>
-      <button class="btn btn-danger p-1" type="" onclick="openlogbook_popup()">Delete</button>
-    </li>
-    <div class="logbook_popup" id="logbook_popup">
-      <div class="centered-popup" id="popup">
+    <h1>Created Logbooks:</h1>
+    {% if total_created_logbooks %}
+    <ul>
+      {% for logbook in logbooks %}
+      <li class="p-3 d-flex justify-content-between">
+        <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
+          <h3 class="title">
+            {{logbook.title}}
+            <div class="code">{{logbook.code}}</div>
+          </h3>
+        </a>
         <button
-          type="button"
-          class="close-button"
-          aria-label="Close"
-          onclick="closePopup()"
+          class="btn btn-danger p-1"
+          type=""
+          onclick="openlogbook_popup('{{logbook.code}}')"
         >
-          &times;</button
-        ><br />
-        <center>
-          <div class="container">
-            <h3>Are you sure?</h3>
-            <h4>Do you really want to delete this logbook?</h4>
-            <br>
-            <h3>{{logbook.code}}</h3>
-            <br />
-            <form method="post" action="{% url 'delete_logbook' logbook.code %}">
-            {% csrf_token %}
-              <button class="btn btn-danger" type="submit">Yes</button>
-            </form>
-            <button class="btn btn-info my-2" onclick="closePopup()">No!</button>
-          </div>
-        </center>
+          Delete
+        </button>
+      </li>
+      {% endfor %}
+      <div class="logbook_popup" id="logbook_popup">
+        <div class="centered-popup" id="popup">
+          <button
+            type="button"
+            class="close-button"
+            aria-label="Close"
+            onclick="closePopup()"
+          >
+            &times;</button
+          ><br />
+          <center>
+            <div class="container">
+              <h3>Are you sure?</h3>
+              <h4>Do you really want to delete this logbook?</h4>
+              <br />
+              <h3 id="code"></h3>
+              <br />
+              <button
+                class="btn btn-danger"
+                type="submit"
+                onclick="deleteLogbook()"
+              >
+                Yes
+              </button>
+              <button class="btn btn-info my-2" onclick="closePopup()">
+                No!
+              </button>
+            </div>
+          </center>
+        </div>
       </div>
-    </div>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <h3>You haven't created any logbooks</h3>
-  {% endif %}
-</div>
+    </ul>
+    {% else %}
+    <h3>You haven't created any logbooks</h3>
+    {% endif %}
+  </div>
 
-
-<div>
-  <h1>Joined Logbooks:</h1>
-  {% if total_joined_logbooks %}
-  <ul>
-    {% for logbook in logbooks %}
-    <li class="p-3 d-flex justify-content-between">
-      <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
-        <h3 class="title">
-          {{logbook.title}}
-          <div class="code">{{logbook.code}}</div>
-        </h3>
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <h3>You haven't joined any logbooks</h3>
-  {% endif %}
-</div>
+  <div>
+    <h1>Joined Logbooks:</h1>
+    {% if total_joined_logbooks %}
+    <ul>
+      {% for logbook in logbooks %}
+      <li class="p-3 d-flex justify-content-between">
+        <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
+          <h3 class="title">
+            {{logbook.title}}
+            <div class="code">{{logbook.code}}</div>
+          </h3>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <h3>You haven't joined any logbooks</h3>
+    {% endif %}
+  </div>
   <script>
     let logbook_popup = document.getElementById("logbook_popup");
     let popup = document.getElementById("popup");
-    function openlogbook_popup() {
+    logbook_code=''
+    function openlogbook_popup(x) {
       logbook_popup.style.display = "flex"; // Show the logbook_popup
       setTimeout(() => {
         popup.style.opacity = "1";
         popup.style.transform = "scale(1)"; // Open the popup with animation
       }, 50); // Add slight delay for smoother transition
+      let logbook_code = x;
+      document.getElementById("code").textContent = logbook_code;
+      return logbook_code
+    }
+    function deleteLogbook() {
+      var url = '{% url "delete_logbook" "__logbook_code__" %}'.replace(
+        "__logbook_code__",
+        logbook_code
+      );
+      window.location.href = url;
     }
     function closePopup() {
       popup.style.opacity = "0";

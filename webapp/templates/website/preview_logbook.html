@@ -1,0 +1,540 @@
+{% extends 'website/header_2.html' %} 
+{% block title %}Step 1: IDENTIFY{% endblock %} 
+{% load static %} 
+{% block content %}
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STATEMENT OF ORIGINALITY</h5>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <h1
+        class="mb-3"
+        style="
+          font-family: 'Times New Roman', Times, serif;
+          color: green;
+          text-align: center;
+          font-size: 1.2em;
+        "
+      >
+        <i
+          ><b
+            >We certify that to the best of our knowledge, the ideas and the
+            work described in this log have resulted from the work of the team
+            signing off from here.</b
+          ></i
+        >
+      </h1>
+      <form>
+        <div class="form-group">
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label class="labels">
+                <h1
+                  class="mb-3"
+                  style="
+                    font-family: 'Times New Roman', Times, serif;
+                    color: dark green;
+                    text-align: center;
+                    font-size: 2em;
+                  "
+                >
+                  <b>The Inventor</b>
+                </h1>
+              </label>
+              <p style="text-align: left;" >{{logbook.inventor}}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="labels">
+                <h1
+                  class="mb-3"
+                  style="
+                    font-family: 'Times New Roman', Times, serif;
+                    color: dark green;
+                    text-align: center;
+                    font-size: 2em;
+                  "
+                >
+                  <b>School Name & Grade</b>
+                </h1>
+              </label>
+              <p style="text-align: left">{{logbook.schoolnamegrade}}</p>
+            </div>
+            <div class="col-md-12">
+              <br />
+              <p style="text-align: left">
+                {{logbook.description}}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <label class="labels">
+                <br />
+                <br />
+                <h1
+                  class="mb-3"
+                  style="
+                    font-family: 'Times New Roman', Times, serif;
+                    color: dark green;
+                    text-align: center;
+                    font-size: 2em;
+                  "
+                >
+                  <b>Signature</b>
+                </h1>
+              </label>
+              <p style="text-align: left">{{logbook.sig1}}</p>
+              <br />
+              <p style="text-align: left">{{logbook.sig2}}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="labels">
+                <br />
+                <br />
+                <h1
+                  class="mb-3"
+                  style="
+                    font-family: 'Times New Roman', Times, serif;
+                    color: white;
+                    text-align: center;
+                    font-size: 2em;
+                  "
+                >
+                  <b>Signature</b>
+                </h1>
+              </label>
+              <p style="text-align: left">{{logbook.sig3}}</p>
+              <br />
+              <p style="text-align: left">{{logbook.sig4}}</p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- step1 -->
+    <br />
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 1- IDENTIFY THE PROBLEM</h5>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >Q1.Identify a few problems you or your friends and family relate
+              with</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.initial_problem}}
+          </p>
+        </div>
+      </form>
+    </div>
+    <!-- step2 -->
+    <!-- second header  -->
+    <br />
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 2- DEFINE AND MAKE SENSE OF THE PROBLEM</h5>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >2.1 Talk to others and understand all aspects of the problems.
+              Now, pick one problem you want to move forward with and take the
+              next step.</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.selected_problem}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >2.2 Define and describe the problem in great detail so it
+              captures all aspects and conveys the same extent and nature of the
+              problem when someone else reads it. Share how you came up with the
+              problem.</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.describe_problem}}
+          </p>
+        </div>
+      </form>
+      <div class="form-group">
+        <label class="form-label" for="inputlg">
+          <b
+            >2.3 Very specifically, list what do you want your solution to
+            achieve?</b
+          >
+        </label>
+        <p style="text-align: left">{{logbook.specific_sol}}
+        </p>
+      </div>
+      <div></div>
+    </div>
+    <!-- step3 -->
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h6>STEP 3- DEVELOP IDEAS AND DRAFT ALTERNATE SOLUTIONS</h6>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >3.1 List the most important factors in solving this problem.
+              Also, what are the different ways you can solve this problem?</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.factors}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >3.2 Research different sources to find any similar solutions
+              already available to use. How are they different from what you are
+              trying to do?</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.research}}
+          </p>
+        </div>
+      </form>
+      <div></div>
+    </div>
+    <!-- step4 -->
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 4- OVER TO THE DRAWING BOARD</h5>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <form>
+        <div class="form-group">
+          <label for="formFileMultiple" class="form-label">
+            <b>
+              4.1 In as much detail as possible, draw a blue print/ model of how
+              your solution will (a) look; (b) what parts/ components/ elements
+              it will involve; (c) how it will work. If possible, show or list
+              all its functions
+            </b>
+          </label>
+          <p style="text-align: left">{{logbook.blueprint}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b>
+              4.2 Talk to experts and potential users of your solution about the
+              obstacles/ problems you are likely to face in making a real model
+              of your design. Note those problems and how you identified them.
+              Note what the experts and users said, their experience in this
+              area, and why you chose to talk to them. Along with the
+              observations of others, also note what problems you think you will
+              face in making a model.
+            </b>
+          </label>
+          <p style="text-align: left">{{logbook.design_problem}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b>
+              4.3 How will you overcome these issues? As you record how you will
+              overcome these issues, if the changes are minor, revise the
+              existing model iteration. If you make major changes to your model,
+              add more iterations to your first model (Model i1….Model i2)
+            </b>
+          </label>
+          <p style="text-align: left">{{logbook.sol_design_problem}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b>
+              4.4 There is a great emphasis needed on making green solutions.
+              This means whatever solution you arrive at, try to make it as
+              sustainable as possible. Note here how your design can be more
+              sustainable. If it uses less of the natural resources, or does not
+              damage the environment, it is a sustainable solution?
+            </b>
+          </label>
+          <p style="text-align: left">{{logbook.green_sol}}
+          </p>
+        </div>
+      </form>
+      <div></div>
+    </div>
+    <!-- step5 -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 5- PLAN FOR PROTOTYPING</h5>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b>
+              5.1 Talk to experts (engineers, scientists, entrepreneurs) to: (a)
+              figure out the best materials, parts and components to use; (b)
+              and where to find them. Record here the materials, parts and
+              components you will use and where you will get them from.
+            </b>
+          </label>
+          <p style="text-align: left">{{logbook.materials}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b>
+              5.2 Read research articles and other published information to: (a)
+              better understand the parts and materials you plan to use; (b) the
+              skills needed to make the model into a real invention; (c) explore
+              if you need any additional skills to make your invention. Note
+              your findings here.
+            </b>
+          </label>
+          <p style="text-align: left">{{logbook.findings}}
+          </p>
+        </div>
+      </form>
+      <div class="form-group">
+        <label class="form-label" for="inputlg">
+          <b
+            >5.3 Connect with experts who can help you make the prototype. Note
+            the credentials of the experts here.</b
+          >
+        </label>
+        <p style="text-align: left">{{logbook.credit}}
+        </p>
+      </div>
+      <div></div>
+    </div>
+    <!-- step6 -->
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 6 - OVER TO THE LABORATORY</h5>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b>
+              6.1 Arrange the materials, tools and machinery you'll use to build
+              your prototype. Do not hesitate to ask for help from others where
+              you need it.Proto1-Build: Note any and all observations you have
+              while building. Attach pictures of the process as you build.
+            </b>
+          </label>
+          <p style="text-align: left">{{logbook.prototype}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="formFileMultiple" class="form-label">
+            Upload Picture
+          </label>
+          <p style="text-align: left">{{logbook.prototype_pic}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg"> Notes </label>
+          <p style="text-align: left">{{logbook.notes}}
+          </p>
+        </div>
+      </form>
+      <div></div>
+    </div>
+    <!-- step7 -->
+    <!-- second header  -->
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 7 - TEST YOUR PROTOTYPE</h5>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >7.1 Test your prototype on different parameters and note the
+              extent to which it satisfies the requirements you had set.
+              Identify any problems you see. Describe how you tested your
+              prototype.</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.testing}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >7.2 Identify and record all positive and negative observations
+              you have each time you test your prototype.</b
+            >
+          </label>
+          <label class="form-label" for="inputlg" style="color: green">
+            <b>
+              At this point, consider if you need to go back
+              <a href="{% url 'step_4' logbook.code %}">TO THE DRAWING BOARD (Step 4)</a> or
+              <a href="{% url 'step_6' logbook.code %}">OVER TO THE LAB(Step 6)</a> for some
+              revisions to the prototype. Keep creating new versions of
+              ModelI1…, ProtoI as needed so you can record all the iterations
+              you did. Keep making changes to your prototype and try new
+              iterations until your invention works as planned.
+            </b>
+          </label>
+          <p style="text-align: left">{{logbook.invention}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg" style="color: green">
+            <b>Positive</b>
+          </label>
+          <p style="text-align: left">{{logbook.positive}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg" style="color: green">
+            <b>Negative</b>
+          </label>
+          <p style="text-align: left">{{logbook.negative}}
+          </p>
+        </div>
+      </form>
+      <div></div>
+    </div>
+    <!-- step8 -->
+    <!-- second header  -->
+    <br />
+    <nav class="navbars">
+      <div class="container-fluid-nav text-center">
+        <h5>STEP 8- PREPARE TO MARKET</h5>
+      </div>
+    </nav>
+    <!-- Question Answeer Box -->
+    <div class="QA_container mb-1 p-4">
+      <form>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b>Instructions</b>
+          </label>
+          <label class="form-label" for="inputlg" style="color: green">
+            Once the prototype of the product is ready, there are four decisions
+            you need to make to see how you can effectively market this product.
+            These are price, branding, value and how you will sell the product.
+            <br />
+            Decide on a catchy name for the product that will appeal to most
+            people and also convey the purpose of the product. Think about words
+            and word combinations that describe your product and the solution it
+            provides. Then use them to decide on a name.
+            <br />
+          </label>
+          <label class="form-label" for="inputlg">
+            <b
+              >8.1 What possible words, word combinations and names can you
+              think of?</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.nameinvention}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >8.2 Now think of the value your product offers. List the
+              functions and benefits it offers to the user. How is it better
+              and/ or different than the products already available in the
+              market?</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.benefits}}
+          </p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <b
+              >8.3 Determine the price at which you will sell it. What it cost
+              you to build the product? What it will cost you to sell it? What
+              will people be willing to pay for it?</b
+            >
+          </label>
+          <p style="text-align: left">{{logbook.price}}
+          </p>
+        </div>
+        <div>
+          <div class="form-group">
+            <label class="form-label" for="inputlg">
+              <b>8.4 Finally, decide where will customers be able to buy it.</b>
+            </label>
+            <p style="text-align: left">{{logbook.buy}}
+            </p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputlg">
+              <b>8.5 Describe your typical customer. What is their :</b>
+            </label>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels"> Age: </label>
+                <p style="text-align: left">{{logbook.customer_age}}</p>
+              </div>
+              <div class="col-md-12">
+                <label class="labels"> Gender </label>
+                <p style="text-align: left">{{logbook.customer_gender}}</p>
+              </div>
+              <div class="col-md-12">
+                <label class="labels"> Education Level: </label>
+                <p style="text-align: left">{{logbook.customer_education}}</p>
+              </div>
+              <div class="col-md-12">
+                <label class="labels"> Household Size: </label>
+                <p style="text-align: left">{{logbook.customer_house}}</p>
+              </div>
+              <div class="col-md-12">
+                <label class="labels"> Marital Status: </label>
+                <p style="text-align: left">{{logbook.customer_marital}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inputlg">
+            <small>Other Notes</small>
+          </label>
+          <p style="text-align: left">{{logbook.other_notes}}
+          </p>
+        </div>
+      </form>
+    </div>
+    <!-- BUTTON -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <!-- Modified -->
+          <a href="{% url 'course_outline' logbook.code %}"
+            ><button class="btn btn-success mr-1" type="button">Back</button></a>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

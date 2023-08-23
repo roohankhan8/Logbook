@@ -86,12 +86,12 @@
         </li>
         <!-- option 4: Preview Logbook -->
         <li>
-          <a href="#">
+          <a href="{% url 'preview_logbook' logbook.code %}">
             <i class="bx bx-book-open"></i>
             <span class="link_name">Preview Logbook</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Preview Logbook</a></li>
+            <li><a class="link_name" href="{% url 'preview_logbook' logbook.code %}">Preview Logbook</a></li>
           </ul>
         </li>
         <!-- option 5: Print Logbook -->

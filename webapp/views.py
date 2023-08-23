@@ -393,9 +393,8 @@ def step_8(request, pk):
 @allowed_user(allowed_roles=["Students"])
 def delete_logbook(request, pk):
     logbook = Logbook.objects.get(code=pk)
-    if request.method == "POST":
-        logbook.delete()
-        return redirect("logbooks", request.user.username)
+    logbook.delete()
+    return redirect("logbooks", request.user.username)
 
 
 @login_required(login_url="/")
@@ -441,7 +440,12 @@ def notes(request, pk):
     context = {"logbook": logbook}
     return render(request, "website/notes.html", context)
 
-
+@login_required(login_url="/")
+@allowed_user(allowed_roles=["Students"])
+def preview_logbook(request,pk):
+    logbook = Logbook.objects.get(code=pk)
+    context = {"logbook": logbook}
+    return render(request, 'website/preview_logbook.html', context)
 # ========================TEAMS========================
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])

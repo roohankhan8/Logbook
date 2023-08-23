@@ -34,6 +34,7 @@ urlpatterns = [
     path("notes/<str:pk>/", views.notes, name="notes"),
     path("logbook_complete/<str:pk>/", views.logbook_complete, name="logbook_complete"),
     path("delete_logbook/<str:pk>/", views.delete_logbook, name="delete_logbook"),
+    path("preview_logbook/<str:pk>/", views.preview_logbook, name="preview_logbook"),
 
     #TEAMS URLS
     path("team_portal/", views.team_portal, name="team_portal"),

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import Group, User
+from django.utils.crypto import get_random_string
 # Create your models here.
 
 student_group = Group.objects.get(name="Students")
@@ -46,8 +47,6 @@ class TeacherProfile(models.Model):
     def __str__(self):
         return self.username
 
-
-from django.utils.crypto import get_random_string
 
 class Logbook(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)

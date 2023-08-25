@@ -1,7 +1,5 @@
-from datetime import date
 from django.db import models
 from django.contrib.auth.models import Group, User
-from django.utils import timezone
 # Create your models here.
 
 student_group = Group.objects.get(name="Students")
@@ -51,80 +49,84 @@ class TeacherProfile(models.Model):
 
 from django.utils.crypto import get_random_string
 
-
 class Logbook(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     code = models.CharField(max_length=8, unique=True)
+    members = models.ManyToManyField(User, related_name='joined_logbooks', blank=True, default=list)
 
     title = models.CharField(max_length=20, null=True)
 
-    inventor = models.CharField(max_length=20, default="")
-    schoolnamegrade = models.CharField(max_length=20, default="")
-    description = models.CharField(max_length=200, default="")
-    sig1 = models.CharField(max_length=200, default="")
-    sig2 = models.CharField(max_length=200, default="")
-    sig3 = models.CharField(max_length=200, default="")
-    sig4 = models.CharField(max_length=200, default="")
+    inventor = models.CharField(max_length=20, default="", null=True, blank=True)
+    schoolnamegrade = models.CharField(max_length=20, default="", null=True, blank=True)
+    description = models.CharField(max_length=200, default="", null=True, blank=True)
+    sig1 = models.CharField(max_length=200, default="", null=True, blank=True)
+    sig2 = models.CharField(max_length=200, default="", null=True, blank=True)
+    sig3 = models.CharField(max_length=200, default="", null=True, blank=True)
+    sig4 = models.CharField(max_length=200, default="", null=True, blank=True)
 
     initial_problem = models.CharField(
-        max_length=200, default=""
+        max_length=200, default="", null=True, blank=True
     )
 
     selected_problem = models.CharField(
-        max_length=200, default=""
+        max_length=200, default="", null=True, blank=True
     )
     describe_problem = models.CharField(
-        max_length=200, default=""
+        max_length=200, default="", null=True, blank=True
     )
-    specific_sol = models.CharField(max_length=200, default="")
+    specific_sol = models.CharField(max_length=200, default="", null=True, blank=True)
 
-    factors = models.CharField(max_length=200, default="")
-    research = models.CharField(max_length=200, default="")
+    factors = models.CharField(max_length=200, default="", null=True, blank=True)
+    research = models.CharField(max_length=200, default="", null=True, blank=True)
 
-    blueprint = models.CharField(max_length=200, default="")
-    design_problem = models.CharField(max_length=200, default="")
+    blueprint = models.CharField(max_length=200, default="", null=True, blank=True)
+    design_problem = models.CharField(max_length=200, default="", null=True, blank=True)
     sol_design_problem = models.CharField(
-        max_length=200, default=""
+        max_length=200, default="", blank=True
     )
-    green_sol = models.CharField(max_length=200, default="")
+    green_sol = models.CharField(max_length=200, default="", null=True, blank=True)
 
-    materials = models.CharField(max_length=200, default="")
-    findings = models.CharField(max_length=200, default="")
-    credit = models.CharField(max_length=200, default="")
+    materials = models.CharField(max_length=200, default="", null=True, blank=True)
+    findings = models.CharField(max_length=200, default="", null=True, blank=True)
+    credit = models.CharField(max_length=200, default="", null=True, blank=True)
 
-    prototype = models.CharField(max_length=200, default="")
-    prototype_pic = models.CharField(max_length=200, default="")
-    notes = models.CharField(max_length=200, default="")
+    prototype = models.CharField(max_length=200, default="", null=True, blank=True)
+    prototype_pic = models.CharField(max_length=200, default="", null=True, blank=True)
+    notes = models.CharField(max_length=200, default="", null=True, blank=True)
 
-    testing = models.CharField(max_length=200, default="")
-    invention = models.CharField(max_length=200, default="")
-    positive = models.CharField(max_length=200, default="")
-    negative = models.CharField(max_length=200, default="")
+    testing = models.CharField(max_length=200, default="", null=True, blank=True)
+    invention = models.CharField(max_length=200, default="", null=True, blank=True)
+    positive = models.CharField(max_length=200, default="", null=True, blank=True)
+    negative = models.CharField(max_length=200, default="", null=True, blank=True)
 
-    nameinvention = models.CharField(max_length=200, default="")
-    benefits = models.CharField(max_length=200, default="")
-    price = models.CharField(max_length=200, default="")
-    buy = models.CharField(max_length=200, default="")
-    customer_age = models.CharField(max_length=200, default="")
+    nameinvention = models.CharField(max_length=200, default="", null=True, blank=True)
+    benefits = models.CharField(max_length=200, default="", null=True, blank=True)
+    price = models.CharField(max_length=200, default="", null=True, blank=True)
+    buy = models.CharField(max_length=200, default="", null=True, blank=True)
+    customer_age = models.CharField(max_length=200, default="", null=True, blank=True)
     customer_gender = models.CharField(
-        max_length=200, default=""
+        max_length=200, default="", null=True, blank=True
     )
     customer_education = models.CharField(
-        max_length=200, default=""
+        max_length=200, default="", null=True, blank=True
     )
-    customer_house = models.CharField(max_length=200, default="")
+    customer_house = models.CharField(max_length=200, default="", null=True, blank=True)
     customer_marital = models.CharField(
-        max_length=200, default=""
+        max_length=200, default="", null=True, blank=True
     )
-    other_notes = models.CharField(max_length=200, default="")
+    other_notes = models.CharField(max_length=200, default="", null=True, blank=True)
     
-    note_title=models.CharField(max_length=20, default="")
-    note_desc=models.CharField(max_length=200, default="")
+    note_title=models.CharField(max_length=20, default="", null=True, blank=True)
+    note_desc=models.CharField(max_length=200, default="", null=True, blank=True)
     
-    things_enjoyed=models.CharField(max_length=200, default="")
-    thanking=models.CharField(max_length=200, default="")
-    difficulty=models.CharField(max_length=200, default="")
-    future=models.CharField(max_length=200, default="")
+    things_enjoyed=models.CharField(max_length=200, default="", null=True, blank=True)
+    thanking=models.CharField(max_length=200, default="", null=True, blank=True)
+    difficulty=models.CharField(max_length=200, default="", null=True, blank=True)
+    future=models.CharField(max_length=200, default="", null=True, blank=True)
+
+    # member2=models.ForeignKey()
+    # member3=models.ForeignKey()
+    # member4=models.ForeignKey()
 
     data_created = models.DateTimeField(auto_now_add=True)
 
@@ -135,3 +137,10 @@ class Logbook(models.Model):
 
     def __str__(self):
         return self.code
+
+    def add_member(self, user):
+        self.members.add(user)
+
+    def my_members(self):
+        for member in self.members:
+            print(member)

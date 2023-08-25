@@ -1,4 +1,5 @@
-{% extends 'website/header.html' %} {% block title %}Logbook Portal{% endblock%} {% load static %} {% block content %}
+{% extends 'website/header.html' %} {% block title %}Logbook Portal{% endblock%}
+{% load static %} {% block content %}
 <style>
   .card {
     width: 350px;
@@ -84,8 +85,8 @@
     color: green;
   }
 </style>
-{% include 'website/messages.html' %}
 <!-------------- student portion options--------- -->
+{% include 'website/messages.html' %}
 <section class="cardsection">
   <!-- Create loogbook -->
   <div class="card" onclick="openlogbook_popup()">
@@ -173,11 +174,11 @@
             Remember: This logbook can be shared with a minimum of 1 and a
             maximum of 4 members.
           </h6>
-          <div id="message" class="hidden">
+          <!-- <div id="message" class="hidden">
             <h6 style="color: rgb(177, 3, 87)">
               Congratulations! logbook has been created.
             </h6>
-          </div>
+          </div> -->
         </div>
       </center>
     </div>
@@ -195,31 +196,27 @@
       </button>
       <center>
         <div class="container">
-          <h4
-            style="
-              color: darkgreen;
-              font-family: 'Times New Roman', Times, serif;
-            "
-          >
-            JOIN LOGBOOK
-          </h4>
-          <div class="container mt-5">
-            <div class="row g-3 align-items-center">
-              <div class="input-group mb-3">
-                <input
-                  required
-                  type="text"
-                  maxlength="30"
-                  class="form-control form-control-lg bg-light fs-6"
-                  placeholder="Enter code to join logbook"
-                />
-              </div>
-            </div>
+          <h1>Join Logbook</h1>
+          <form method="post">
+            {% csrf_token %}
+            <h4>Title:</h4>
+            <input type="text" name="join_code" id="">
             <p style="color: red">
-              If you don't have code , Lets create your new logbook!
+              If you don't have code, Lets create your new
+              <b
+                style="text-decoration: none; cursor: pointer"
+                onclick="openlogbook_popup()"
+                >logbook!</b
+              >
             </p>
-          </div>
-          <button type="button" class="btn btn-success">Join</button>
+            <button
+              type="submit"
+              class="btn text-white"
+              style="background-color: darkgreen"
+            >
+              Join Logbook
+            </button>
+          </form>
         </div>
       </center>
     </div>
@@ -234,6 +231,7 @@
     const messageDiv = document.getElementById("message");
 
     function openlogbook_popup() {
+      closePopup1();
       logbook_popup.style.display = "flex"; // Show the logbook_popup
       setTimeout(() => {
         popup.style.opacity = "1";

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
 from django.db import IntegrityError
@@ -12,7 +12,7 @@ from .forms import *
 # Create your views here.
 
 
-# ========================SIGNUP SIGNIN VIEWS========================
+# ========================SIGNUP, SIGNIN VIEWS========================
 @unauthenticated
 def register(request):
     if request.method == "POST":
@@ -106,52 +106,46 @@ def logout_view(request):
     return redirect("/")
 
 
-@login_required(login_url="/")
-@allowed_user(allowed_roles=["Students"])
-def join_logbook(request):
-    if request.method == "POST":
-        form = JoinLogbookForm(request.POST)
-        if form.is_valid():
-            logbook_code = form.cleaned_data["logbook_code"]
-            try:
-                logbook = Logbook.objects.get(code=logbook_code)
-                # Add logic to add the current user to the logbook participants
-                return redirect("course_outline", logbook.id)
-            except Logbook.DoesNotExist:
-                form.add_error("logbook_code", "Logbook with this code does not exist.")
-    else:
-        form = JoinLogbookForm()
-    context = {"form": form}
-    return render(request, "website/join_logbook.html", context)
-
-
 # ========================STUDENTS========================
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
 def logbook_portal(request):
-    student = request.user.studentprofile
+    form = CreateLogbookForm(request.POST)
     if request.method == "POST":
-        form = CreateLogbookForm(request.POST)
+        joining=request.POST.get('join_code')
         if form.is_valid():
             logbook = form.save(commit=False)
             logbook.creator = request.user  # Assuming you have authentication set up
             logbook.save()
             messages.success(request, "Logbook created")
             return redirect("course_outline", logbook.code)
-    else:
-        form = CreateLogbookForm()
-    context = {"student": student, "form": form}
+        if len(joining)==8:
+            try:
+                logbook = Logbook.objects.get(code=joining)
+                # Add logic to add the current user to the logbook participants
+                if request.user != logbook.creator:  # Ensure the creator doesn't join as a member
+                    logbook.add_member(request.user)
+                else:
+                    messages.error(request, "You are already the creator!")
+                return redirect("course_outline", logbook.code)
+            except Logbook.DoesNotExist:
+                form.add_error("logbook_code", "Logbook with this code does not exist.")
+        else:
+            messages.error(request, "Invalid logbook code")
+    context={'form':form}
     return render(request, "website/logbook_portal.html", context)
 
 
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
 def logbooks(request, pk):
-    logbooks = request.user.logbook_set.all()
-    total_joined_logbooks = 0
-    total_created_logbooks = logbooks.count() > 0
+    created_logbooks = request.user.logbook_set.all()
+    joined_logbooks = request.user.joined_logbooks.all()
+    total_joined_logbooks = joined_logbooks.count() > 0
+    total_created_logbooks = created_logbooks.count() > 0
     context = {
-        "logbooks": logbooks,
+        "created_logbooks": created_logbooks,
+        "joined_logbooks": joined_logbooks,
         "total_created_logbooks": total_created_logbooks,
         "total_joined_logbooks": total_joined_logbooks,
     }
@@ -188,6 +182,7 @@ def student_profile(request):
 @allowed_user(allowed_roles=["Students"])
 def course_outline(request, pk):
     logbook = Logbook.objects.get(code=pk)
+    print(logbook.my_members)
     context = {"logbook": logbook}
     return render(request, "website/outline.html", context)
 
@@ -440,12 +435,15 @@ def notes(request, pk):
     context = {"logbook": logbook}
     return render(request, "website/notes.html", context)
 
+
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
-def preview_logbook(request,pk):
+def preview_logbook(request, pk):
     logbook = Logbook.objects.get(code=pk)
     context = {"logbook": logbook}
-    return render(request, 'website/preview_logbook.html', context)
+    return render(request, "website/preview_logbook.html", context)
+
+
 # ========================TEAMS========================
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])

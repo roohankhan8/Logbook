@@ -116,12 +116,12 @@
         </li>
         <!-- option 7: Exit -->
         <li>
-          <a href="{% url 'logbook_portal' %}">
+          <a href="{% url 'logbooks' user.username %}">
             <i class="bx bx-exit"></i>
             <span class="link_name">Exit</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="{% url 'logbook_portal' %}">Exit</a></li>
+            <li><a class="link_name" href="{% url 'logbooks' user.username %}">Exit</a></li>
           </ul>
         </li>
       </ul>

@@ -17,7 +17,7 @@ urlpatterns = [
     #LOGBOOK URLS
     # path("create_logbook/", views.create_logbook, name="create_logbook"),
     path("logbooks/<str:pk>/", views.logbooks, name="logbooks"),
-    path("join_logbook/", views.join_logbook, name="join_logbook"),
+    # path("join_logbook/<str:pk>", views.join_logbook, name="join_logbook"),
     path("course_outline/<str:pk>/", views.course_outline, name="course_outline"),
     path("record_of_invention/<str:pk>/", views.record_of_invention, name="record_of_invention"),
     path("statement_of_originality/<str:pk>/", views.statement_of_originality, name="statement_of_originality"),

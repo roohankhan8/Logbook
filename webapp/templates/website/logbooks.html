@@ -118,7 +118,7 @@
     <h1>Created Logbooks:</h1>
     {% if total_created_logbooks %}
     <ul>
-      {% for logbook in logbooks %}
+      {% for logbook in created_logbooks %}
       <li class="p-3 d-flex justify-content-between">
         <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
           <h3 class="title">
@@ -176,7 +176,7 @@
     <h1>Joined Logbooks:</h1>
     {% if total_joined_logbooks %}
     <ul>
-      {% for logbook in logbooks %}
+      {% for logbook in joined_logbooks %}
       <li class="p-3 d-flex justify-content-between">
         <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
           <h3 class="title">
@@ -194,14 +194,13 @@
   <script>
     let logbook_popup = document.getElementById("logbook_popup");
     let popup = document.getElementById("popup");
-    logbook_code=''
     function openlogbook_popup(x) {
       logbook_popup.style.display = "flex"; // Show the logbook_popup
       setTimeout(() => {
         popup.style.opacity = "1";
         popup.style.transform = "scale(1)"; // Open the popup with animation
       }, 50); // Add slight delay for smoother transition
-      let logbook_code = x;
+      logbook_code = x;
       document.getElementById("code").textContent = logbook_code;
       return logbook_code
     }

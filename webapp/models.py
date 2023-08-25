@@ -124,10 +124,6 @@ class Logbook(models.Model):
     difficulty=models.CharField(max_length=200, default="", null=True, blank=True)
     future=models.CharField(max_length=200, default="", null=True, blank=True)
 
-    # member2=models.ForeignKey()
-    # member3=models.ForeignKey()
-    # member4=models.ForeignKey()
-
     data_created = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
@@ -140,7 +136,3 @@ class Logbook(models.Model):
 
     def add_member(self, user):
         self.members.add(user)
-
-    def my_members(self):
-        for member in self.members:
-            print(member)

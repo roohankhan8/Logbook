@@ -11,7 +11,6 @@ from .forms import *
 
 # Create your views here.
 
-
 # ========================SIGNUP, SIGNIN VIEWS========================
 @unauthenticated
 def register(request):
@@ -125,11 +124,15 @@ def logbook_portal(request):
                 # Add logic to add the current user to the logbook participants
                 if request.user != logbook.creator:  # Ensure the creator doesn't join as a member
                     logbook.add_member(request.user)
-                else:
+                    messages.success(request, "You are now a member!")
+                elif request.user in logbook.members:
+                    messages.error(request, "You are already a member!")
+                elif request.user==logbook.creator:
                     messages.error(request, "You are already the creator!")
                 return redirect("course_outline", logbook.code)
             except Logbook.DoesNotExist:
-                form.add_error("logbook_code", "Logbook with this code does not exist.")
+                messages.error("Logbook with this code does not exist.")
+                return redirect('logbook_portal')
         else:
             messages.error(request, "Invalid logbook code")
     context={'form':form}
@@ -182,7 +185,6 @@ def student_profile(request):
 @allowed_user(allowed_roles=["Students"])
 def course_outline(request, pk):
     logbook = Logbook.objects.get(code=pk)
-    print(logbook.my_members)
     context = {"logbook": logbook}
     return render(request, "website/outline.html", context)
 

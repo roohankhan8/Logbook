@@ -37,10 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    
+    'daphne',
+
     'django.contrib.staticfiles',
 
     'webapp.apps.WebappConfig',
+    'channels'
 ]
+
+ASGI_APPLICATION = 'logbook.asgi.application'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,6 +82,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'logbook.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -84,7 +92,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+CHANNEL_LAYERS = {
+	"default": {
+		"BACKEND": "channels.layers.InMemoryChannelLayer"
+	}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

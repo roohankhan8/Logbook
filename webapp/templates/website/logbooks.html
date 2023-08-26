@@ -1,16 +1,18 @@
 {% extends 'website/header.html' %} {% block title %}My Logbooks{% endblock %}
 {% load static %} {% block content %}
+
 <style>
   .code {
     font-size: 0.5em;
   }
   #logbooks {
-    color: darkgreen;
+    color: rgb(32, 170, 99);
     text-decoration: none;
   }
   #main-div {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+
   }
   @media only screen and (max-width: 768px) {
     .box-area {
@@ -28,10 +30,6 @@
     }
   }
 
-  .card {
-    width: 350px;
-    height: 300px;
-  }
   .close-button {
     color: white;
     position: absolute;
@@ -46,12 +44,11 @@
     align-items: center;
   }
 
-  .btns {
-    box-shadow: rgb(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    width: 130px;
-  }
 
+  .heading{
+    font-family: 'Times New Roman', Times, serif;
+    color:grey;
+  }
   .logbook_popup {
     position: fixed;
     top: 0;
@@ -102,7 +99,7 @@
       max-width: 100%;
     }
   }
-  .hidden {
+  /* .hidden {
     display: none;
   }
   #message {
@@ -110,30 +107,29 @@
     font-size: 24px;
     text-align: center;
     color: green;
-  }
+  } */
 </style>
 
 <div id="main-div" class="items-center py-5">
   <div>
-    <h1>Created Logbooks:</h1>
+    <h1 class="heading">Created Logbooks:</h1>
     {% if total_created_logbooks %}
     <ul>
       {% for logbook in created_logbooks %}
-      <li class="p-3 d-flex justify-content-between">
+      <div class="shadow p-1 mb-4 bg-body-tertiary rounded">
+      <li class="p-2 d-flex justify-content-between">
         <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
-          <h3 class="title">
+          <h4 class="title">
             {{logbook.title}}
             <div class="code">{{logbook.code}}</div>
-          </h3>
+          </h4>
         </a>
-        <button
-          class="btn btn-danger p-1"
+  <button class="btn btn-outline-danger" 
           type=""
-          onclick="openlogbook_popup('{{logbook.code}}')"
-        >
-          Delete
-        </button>
-      </li>
+          onclick="openlogbook_popup('{{logbook.code}}')">
+   Delete
+  </button>
+      </li></div>
       {% endfor %}
       <div class="logbook_popup" id="logbook_popup">
         <div class="centered-popup" id="popup">
@@ -146,21 +142,22 @@
             &times;</button
           ><br />
           <center>
-            <div class="container">
-              <h3>Are you sure?</h3>
-              <h4>Do you really want to delete this logbook?</h4>
+            <div class="container"><br>
+              <h1 style="color: rgb(119, 117, 117); font-family: 'Times New Roman';">Are you sure?</h1>
+              <h6 style="color: rgb(119, 117, 117);">Do you really want to delete this logbook?
+
+              </h6>
               <br />
-              <h3 id="code"></h3>
+              <h6 id="code"></h6>
               <br />
               <button
                 class="btn btn-danger"
                 type="submit"
                 onclick="deleteLogbook()"
-              >
-                Yes
+              >Delete
               </button>
               <button class="btn btn-info my-2" onclick="closePopup()">
-                No!
+                Cancel
               </button>
             </div>
           </center>
@@ -173,18 +170,19 @@
   </div>
 
   <div>
-    <h1>Joined Logbooks:</h1>
+    <h1 class="heading">Joined Logbooks:</h1>
     {% if total_joined_logbooks %}
     <ul>
       {% for logbook in joined_logbooks %}
-      <li class="p-3 d-flex justify-content-between">
+      <div class="shadow p-1 mb-4 bg-body-tertiary rounded">
+      <li class="p-2 d-flex justify-content-between">
         <a id="logbooks" href="{% url 'course_outline' logbook.code %}">
-          <h3 class="title">
+          <h4 class="title">
             {{logbook.title}}
             <div class="code">{{logbook.code}}</div>
-          </h3>
+          </h4>
         </a>
-      </li>
+      </li></div>
       {% endfor %}
     </ul>
     {% else %}

@@ -106,6 +106,16 @@ def logout_view(request):
 
 
 # ========================STUDENTS========================
+
+@login_required(login_url="/")
+@allowed_user(allowed_roles=["Students"])
+def chat_page(request, pk):
+    logbook = Logbook.objects.get(code=pk)
+    if not request.user.is_authenticated:
+        return redirect("login")
+    context = {"logbook": logbook}
+    return render(request, "website/chat_page.html", context)
+
 @login_required(login_url="/")
 @allowed_user(allowed_roles=["Students"])
 def logbook_portal(request):

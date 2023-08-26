@@ -18,7 +18,10 @@
     justify-content: center;
     align-items: center;
   }
-
+  .heading{
+    font-family: 'Times New Roman', Times, serif;
+    color: darkgreen;
+  }
   .btns {
     box-shadow: rgb(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -149,32 +152,26 @@
         class="close-button"
         aria-label="Close"
         onclick="closePopup()"
-      >
-        &times;</button
-      ><br />
+      > &times;</button><br/>
       <center>
         <div class="container">
-          <h1>Create Logbook</h1>
+          <h3 class="heading">CREATE LOGBOOK</h3>
           <br />
           <form method="post">
             {% csrf_token %}
-            <h4>Title:</h4>
-            <h5>{{ form.title }}</h5>
-            <button
-              type="submit"
-              class="btn text-white"
-              style="background-color: darkgreen"
-            >
-              Create Logbook
-            </button>
-          </form>
-          <br />
-          <br />
-          <h6 style="color: grey">
+             <h4 class="heading">Title:</h4>
+             <h5>{{ form.title }}</h5>  
+                <h6 style="color: grey">
             Remember: This logbook can be shared with a minimum of 1 and a
             maximum of 4 members.
-          </h6>
-          <!-- <div id="message" class="hidden">
+                  </h6><br><br><button
+              type="submit"
+              class="btn text-white"
+              style="background-color: darkgreen">
+              Create Logbook
+            </button> </form>
+         
+           <!-- <div id="message" class="hidden">
             <h6 style="color: rgb(177, 3, 87)">
               Congratulations! logbook has been created.
             </h6>
@@ -196,25 +193,28 @@
       </button>
       <center>
         <div class="container">
-          <h1>Join Logbook</h1>
+          <h3 class="heading">JOIN LOGBOOK</h3><br>
           <form method="post">
             {% csrf_token %}
-            <h4>Title:</h4>
-            <input type="text" name="join_code" id="">
-            <p style="color: red">
-              If you don't have one, Lets create your new
+           <div class="input-group mb-3">
+            <input required type="text" 
+                   maxlength="30" 
+                   class="form-control form-control-lg bg-light fs-6" 
+                   placeholder="Entre code here"
+                   name="join_code" id="" />
+            </div>
+            <p style="color: rgba(237, 0, 0, 0.773)">
+              If you don't have one, let's create your new logbook
               <b
                 style="text-decoration: none; cursor: pointer"
                 onclick="openlogbook_popup()"
-                >logbook!</b
-              >
-            </p>
+                >logbook!</b>
+            </p><br>
             <button
               type="submit"
               class="btn text-white"
-              style="background-color: darkgreen"
-            >
-              Join Logbook
+              style="background-color: darkgreen">
+              Join 
             </button>
           </form>
         </div>

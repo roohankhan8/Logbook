@@ -86,6 +86,16 @@
         </li>
         <!-- option 4: Preview Logbook -->
         <li>
+          <a href="{% url 'chat_page' logbook.code %}">
+            <i class="bx bx-chat"></i>
+            <span class="link_name">Chat</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="{% url 'chat_page' logbook.code %}">Chat</a></li>
+          </ul>
+        </li>
+        <!-- option 4: Preview Logbook -->
+        <li>
           <a href="{% url 'preview_logbook' logbook.code %}">
             <i class="bx bx-book-open"></i>
             <span class="link_name">Preview Logbook</span>

@@ -1,0 +1,114 @@
+{% load static %}
+<div class="container">
+  <div class="chatbox">
+    <div class="chatbox__support">
+      <div class="chatbox__header">
+        <div class="chatbox__image--header">
+          <img
+            src="{% static 'images/user.png' %}"
+            width="35px"
+            alt="userimage"
+          />
+        </div>
+        <div class="chatbox__content--header">
+          <h4 class="chatbox__heading--header">Team Chat</h4>
+          <p class="chatbox__description--header">{{request.user.username}}</p>
+        </div>
+      </div>
+
+      <div class="chatbox__messages" id="id_chat_item_container">
+        <div class="chatbox__footer">
+          <input
+            type="text"
+            id="id_message_send_input"
+            placeholder="Write a message..."
+          />
+          <button
+            type="sumbit"
+            id="id_message_send_button"
+            style="color: darkgreen"
+            class="btn btn"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="chatbox__button">
+      <button>
+        <img
+          src="{% static 'images/chatbox-icon.png' %}"
+          alt=""
+          width="32px"
+          height="32px"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+<script>
+  class InteractiveChatbox {
+  constructor(a, b, c) {
+    this.args = {
+      button: a,
+      chatbox: b,
+    };
+    this.state = false;
+  }
+  display() {
+    const { button, chatbox } = this.args;
+    button.addEventListener("click", () => this.toggleState(chatbox));
+  }
+  toggleState(chatbox) {
+    this.state = !this.state;
+    this.showOrHideChatBox(chatbox, this.args.button);
+  }
+  showOrHideChatBox(chatbox, button) {
+    if (this.state) {
+      chatbox.classList.add("chatbox--active");
+    } else if (!this.state) {
+      chatbox.classList.remove("chatbox--active");
+    }
+  }
+}
+const chatButton = document.querySelector(".chatbox__button");
+const chatContent = document.querySelector(".chatbox__support");
+
+const chatbox = new InteractiveChatbox(chatButton, chatContent);
+chatbox.display();
+
+
+const chatSocket = new WebSocket("ws://" + window.location.host + "/");
+chatSocket.onopen = function (e) {
+  console.log("The connection was setup successfully !");
+};
+chatSocket.onclose = function (e) {
+  console.log("Something unexpected happened !");
+};
+document.querySelector("#id_message_send_input").focus();
+document.querySelector("#id_message_send_input").onkeyup = function (e) {
+  if (e.keyCode == 13) {
+    document.querySelector("#id_message_send_button").click();
+  }
+};
+
+document.querySelector("#id_message_send_button").onclick = function (e) {
+  var messageInput = document.querySelector("#id_message_send_input").value;
+  chatSocket.send(
+    JSON.stringify({
+      message: messageInput,
+      username: "{{request.user.username}}",
+    })
+  );
+};
+chatSocket.onmessage = function (e) {
+  const data = JSON.parse(e.data);
+  var div = document.createElement("div");
+  div.classList.add('messages__item')
+  div.classList.add('messages__item--operator')
+  div.innerHTML = data.message;
+  document.querySelector("#id_message_send_input").value = "";
+  document.querySelector("#id_chat_item_container").appendChild(div);
+};
+</script>

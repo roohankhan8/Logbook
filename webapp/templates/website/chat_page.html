@@ -1,11 +1,11 @@
 {% extends 'website/header_2.html' %} {% block title %}Course
 Outline{%endblock%} {% load static %} {% block content %}
 <nav class="navbars">
-    <div class="container-fluid-nav text-center">
-      <h5>CHAT WITH YOUR TEAM!</h5>
-      <h5>{{request.user.username}}</h5>
-    </div>
-  </nav>
+  <div class="container-fluid-nav text-center">
+    <h5>CHAT WITH YOUR TEAM!</h5>
+    <h5>{{request.user.username}}</h5>
+  </div>
+</nav>
 <div
   class="chat__item__container"
   id="id_chat_item_container"
@@ -28,11 +28,14 @@ Outline{%endblock%} {% load static %} {% block content %}
   document.querySelector("#id_message_send_input").focus();
   document.querySelector("#id_message_send_input").onkeyup = function (e) {
     if (e.keyCode == 13) {
-      document.querySelector("#id_message_send_button").click();
+      if (false){
+        document.querySelector("#id_message_send_button").click();
+      }
     }
   };
   document.querySelector("#id_message_send_button").onclick = function (e) {
     var messageInput = document.querySelector("#id_message_send_input").value;
+
     chatSocket.send(
       JSON.stringify({
         message: messageInput,

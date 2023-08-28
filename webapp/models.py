@@ -13,14 +13,14 @@ admin_group = Group.objects.get(name="Admins")
 class StudentProfile(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
     username = models.CharField(max_length=20, null=True)
-    email = models.CharField(max_length=200, null=True)
+    email = models.CharField(max_length=600, null=True)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     gender = models.CharField(max_length=20)
-    excited_about = models.CharField(max_length=200, default="")
-    free_time = models.CharField(max_length=200, default="")
-    fav_book = models.CharField(max_length=200, default="")
-    fav_food = models.CharField(max_length=200, default="")
+    excited_about = models.CharField(max_length=600, default="")
+    free_time = models.CharField(max_length=600, default="")
+    fav_book = models.CharField(max_length=600, default="")
+    fav_food = models.CharField(max_length=600, default="")
     profile_pic = models.ImageField(
         default="profilepics/images.png", null=True, blank=True
     )
@@ -37,7 +37,7 @@ class TeacherProfile(models.Model):
     first_name = models.CharField(max_length=20, null=True)
     last_name = models.CharField(max_length=20, null=True)
     gender = models.CharField(max_length=20, null=True)
-    inst_name = models.CharField(max_length=200, null=True, blank=True)
+    inst_name = models.CharField(max_length=600, null=True, blank=True)
     phone = models.CharField(max_length=20, null=True)
     profile_pic = models.ImageField(
         default="profilepics/images.png", null=True, blank=True
@@ -57,71 +57,82 @@ class Logbook(models.Model):
 
     inventor = models.CharField(max_length=20, default="", null=True, blank=True)
     schoolnamegrade = models.CharField(max_length=20, default="", null=True, blank=True)
-    description = models.CharField(max_length=200, default="", null=True, blank=True)
-    sig1 = models.CharField(max_length=200, default="", null=True, blank=True)
-    sig2 = models.CharField(max_length=200, default="", null=True, blank=True)
-    sig3 = models.CharField(max_length=200, default="", null=True, blank=True)
-    sig4 = models.CharField(max_length=200, default="", null=True, blank=True)
+    member2 = models.CharField(max_length=600, default="", null=True, blank=True)
+    schoolnamegrade2 = models.CharField(max_length=20, default="", null=True, blank=True)
+    member3 = models.CharField(max_length=600, default="", null=True, blank=True)
+    schoolnamegrade3 = models.CharField(max_length=20, default="", null=True, blank=True)
+    member4 = models.CharField(max_length=600, default="", null=True, blank=True)
+    schoolnamegrade4 = models.CharField(max_length=20, default="", null=True, blank=True)
+    member5 = models.CharField(max_length=600, default="", null=True, blank=True)
+    schoolnamegrade5 = models.CharField(max_length=20, default="", null=True, blank=True)
+    member6 = models.CharField(max_length=600, default="", null=True, blank=True)
+    schoolnamegrade6 = models.CharField(max_length=20, default="", null=True, blank=True)
+    sig1 = models.CharField(max_length=600, default="", null=True, blank=True)
+    sig2 = models.CharField(max_length=600, default="", null=True, blank=True)
+    sig3 = models.CharField(max_length=600, default="", null=True, blank=True)
+    sig4 = models.CharField(max_length=600, default="", null=True, blank=True)
+    sig5 = models.CharField(max_length=600, default="", null=True, blank=True)
+    sig6 = models.CharField(max_length=600, default="", null=True, blank=True)
 
     initial_problem = models.CharField(
-        max_length=200, default="", null=True, blank=True
+        max_length=600, default="", null=True, blank=True
     )
 
     selected_problem = models.CharField(
-        max_length=200, default="", null=True, blank=True
+        max_length=600, default="", null=True, blank=True
     )
     describe_problem = models.CharField(
-        max_length=200, default="", null=True, blank=True
+        max_length=600, default="", null=True, blank=True
     )
-    specific_sol = models.CharField(max_length=200, default="", null=True, blank=True)
+    specific_sol = models.CharField(max_length=600, default="", null=True, blank=True)
 
-    factors = models.CharField(max_length=200, default="", null=True, blank=True)
-    research = models.CharField(max_length=200, default="", null=True, blank=True)
+    factors = models.CharField(max_length=600, default="", null=True, blank=True)
+    research = models.CharField(max_length=600, default="", null=True, blank=True)
 
-    blueprint = models.CharField(max_length=200, default="", null=True, blank=True)
-    design_problem = models.CharField(max_length=200, default="", null=True, blank=True)
+    blueprint = models.CharField(max_length=600, default="", null=True, blank=True)
+    design_problem = models.CharField(max_length=600, default="", null=True, blank=True)
     sol_design_problem = models.CharField(
-        max_length=200, default="", blank=True
+        max_length=600, default="", blank=True
     )
-    green_sol = models.CharField(max_length=200, default="", null=True, blank=True)
+    green_sol = models.CharField(max_length=600, default="", null=True, blank=True)
 
-    materials = models.CharField(max_length=200, default="", null=True, blank=True)
-    findings = models.CharField(max_length=200, default="", null=True, blank=True)
-    credit = models.CharField(max_length=200, default="", null=True, blank=True)
+    materials = models.CharField(max_length=600, default="", null=True, blank=True)
+    findings = models.CharField(max_length=600, default="", null=True, blank=True)
+    credit = models.CharField(max_length=600, default="", null=True, blank=True)
 
-    prototype = models.CharField(max_length=200, default="", null=True, blank=True)
-    prototype_pic = models.CharField(max_length=200, default="", null=True, blank=True)
-    notes = models.CharField(max_length=200, default="", null=True, blank=True)
+    prototype = models.CharField(max_length=600, default="", null=True, blank=True)
+    prototype_pic = models.CharField(max_length=600, default="", null=True, blank=True)
+    notes = models.CharField(max_length=600, default="", null=True, blank=True)
 
-    testing = models.CharField(max_length=200, default="", null=True, blank=True)
-    invention = models.CharField(max_length=200, default="", null=True, blank=True)
-    positive = models.CharField(max_length=200, default="", null=True, blank=True)
-    negative = models.CharField(max_length=200, default="", null=True, blank=True)
+    testing = models.CharField(max_length=600, default="", null=True, blank=True)
+    invention = models.CharField(max_length=600, default="", null=True, blank=True)
+    positive = models.CharField(max_length=600, default="", null=True, blank=True)
+    negative = models.CharField(max_length=600, default="", null=True, blank=True)
 
-    nameinvention = models.CharField(max_length=200, default="", null=True, blank=True)
-    benefits = models.CharField(max_length=200, default="", null=True, blank=True)
-    price = models.CharField(max_length=200, default="", null=True, blank=True)
-    buy = models.CharField(max_length=200, default="", null=True, blank=True)
-    customer_age = models.CharField(max_length=200, default="", null=True, blank=True)
+    nameinvention = models.CharField(max_length=600, default="", null=True, blank=True)
+    benefits = models.CharField(max_length=600, default="", null=True, blank=True)
+    price = models.CharField(max_length=600, default="", null=True, blank=True)
+    buy = models.CharField(max_length=600, default="", null=True, blank=True)
+    customer_age = models.CharField(max_length=600, default="", null=True, blank=True)
     customer_gender = models.CharField(
-        max_length=200, default="", null=True, blank=True
+        max_length=600, default="", null=True, blank=True
     )
     customer_education = models.CharField(
-        max_length=200, default="", null=True, blank=True
+        max_length=600, default="", null=True, blank=True
     )
-    customer_house = models.CharField(max_length=200, default="", null=True, blank=True)
+    customer_house = models.CharField(max_length=600, default="", null=True, blank=True)
     customer_marital = models.CharField(
-        max_length=200, default="", null=True, blank=True
+        max_length=600, default="", null=True, blank=True
     )
-    other_notes = models.CharField(max_length=200, default="", null=True, blank=True)
+    other_notes = models.CharField(max_length=600, default="", null=True, blank=True)
     
     note_title=models.CharField(max_length=20, default="", null=True, blank=True)
-    note_desc=models.CharField(max_length=200, default="", null=True, blank=True)
+    note_desc=models.CharField(max_length=600, default="", null=True, blank=True)
     
-    things_enjoyed=models.CharField(max_length=200, default="", null=True, blank=True)
-    thanking=models.CharField(max_length=200, default="", null=True, blank=True)
-    difficulty=models.CharField(max_length=200, default="", null=True, blank=True)
-    future=models.CharField(max_length=200, default="", null=True, blank=True)
+    things_enjoyed=models.CharField(max_length=600, default="", null=True, blank=True)
+    thanking=models.CharField(max_length=600, default="", null=True, blank=True)
+    difficulty=models.CharField(max_length=600, default="", null=True, blank=True)
+    future=models.CharField(max_length=600, default="", null=True, blank=True)
 
     data_created = models.DateTimeField(auto_now_add=True)
 

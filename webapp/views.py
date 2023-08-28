@@ -214,19 +214,41 @@ def statement_of_originality(request, pk):
     if request.method == "POST":
         inventor = request.POST.get("inventor")
         schoolnamegrade = request.POST.get("schoolnamegrade")
-        description = request.POST.get("description")
+        member2=request.POST.get('member2')
+        schoolnamegrade2 = request.POST.get("schoolnamegrade2")
+        member3=request.POST.get('member3')
+        schoolnamegrade3 = request.POST.get("schoolnamegrade3")
+        member4=request.POST.get('member4')
+        schoolnamegrade4 = request.POST.get("schoolnamegrade4")
+        member5=request.POST.get('member5')
+        schoolnamegrade5 = request.POST.get("schoolnamegrade5")
+        member6=request.POST.get('member6')
+        schoolnamegrade6 = request.POST.get("schoolnamegrade6")
         sig1 = request.POST.get("sig1")
         sig2 = request.POST.get("sig2")
         sig3 = request.POST.get("sig3")
         sig4 = request.POST.get("sig4")
+        sig5 = request.POST.get("sig5")
+        sig6 = request.POST.get("sig6")
         Logbook.objects.update(
             inventor=inventor,
             schoolnamegrade=schoolnamegrade,
-            description=description,
+            member2=member2,
+            schoolnamegrade2=schoolnamegrade2,
+            member3=member3,
+            schoolnamegrade3=schoolnamegrade3,
+            member4=member4,
+            schoolnamegrade4=schoolnamegrade4,
+            member5=member5,
+            schoolnamegrade5=schoolnamegrade5,
+            member6=member6,
+            schoolnamegrade6=schoolnamegrade6,
             sig1=sig1,
             sig2=sig2,
             sig3=sig3,
             sig4=sig4,
+            sig5=sig5,
+            sig6=sig6,
         )
         return redirect("flowchart", logbook.code)
     context = {"logbook": logbook}

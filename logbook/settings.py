@@ -83,12 +83,8 @@ WSGI_APPLICATION = "logbook.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "Logbook",
-        "USER": "roohan",
-        "PASSWORD": "roohan",
-        "HOST": "localhost",  # Set to your PostgreSQL server's host
-        "PORT": "5432",  # Default PostgreSQL port
+        "ENGINE": "django.db.backends.sqlite3",  # Database engine
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}

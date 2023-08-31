@@ -30,6 +30,7 @@
 
 .chatbox__image--header {
     margin-right: 10px;
+    
 }
 .chatbox__description--header {
     font-size: .9rem;
@@ -99,10 +100,12 @@
 .chatbox__send--footer {
     color: white;
 }
-/* BUTTON */
+/* BUTTON (CHANGES)*/
 .chatbox__button {
-    text-align: right;
-}
+   text-align: right;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; }
 .chatbox__button button,
 .chatbox__button button:focus,
 .chatbox__button button:visited {
@@ -115,15 +118,17 @@
     border-bottom-left-radius: 50px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+
 }
 
 
-/* CHATBOX
+/* CHATBOX (CHANGES)
 =============== */
 .chatbox {
-    position: absolute;
-    bottom: 30px;
+    position: fixed;
+    bottom: 60px;
     right: 30px;
+    
 }
 
 /* CONTENT ISOPEN */

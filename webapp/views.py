@@ -1,3 +1,4 @@
+import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -124,15 +125,14 @@ def logbook_portal(request):
         joining=request.POST.get('join_code')
         if form.is_valid():
             logbook = form.save(commit=False)
-            logbook.creator = request.user  # Assuming you have authentication set up
+            logbook.creator = request.user
             logbook.save()
             messages.success(request, "Logbook created")
             return redirect("course_outline", logbook.code)
         if len(joining)==8:
             try:
                 logbook = Logbook.objects.get(code=joining)
-                # Add logic to add the current user to the logbook participants
-                if request.user != logbook.creator:  # Ensure the creator doesn't join as a member
+                if request.user != logbook.creator: 
                     logbook.add_member(request.user)
                     messages.success(request, "You are now a member!")
                 elif request.user in logbook.members:
@@ -401,6 +401,9 @@ def step_8(request, pk):
         customer_house = request.POST.get("customer_house")
         customer_marital = request.POST.get("customer_marital")
         other_notes = request.POST.get("other_notes")
+
+        # print(customer_age)
+        # customer_age = int(customer_age)
         Logbook.objects.update(
             nameinvention=nameinvention,
             benefits=benefits,
@@ -513,3 +516,31 @@ def teacher_profile(request):
         return redirect("teacher_profile")
     context = {"teacher": teacher}
     return render(request, "website/teacher_profile.html", context)
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt  # Only if you don't need CSRF protection
+def send_message(request,pk):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            message = data.get('message')
+            username = data.get('username')
+            code=pk
+            
+            # Process the message (e.g., save it to the database)
+            Message.objects.create(
+                code=code ,
+                sender=username,
+                content=message
+            )
+            # Return a response, indicating success or failure
+            response_data = {'status': 'success', 'message': 'Message sent successfully'}
+            return JsonResponse(response_data)
+        except Exception as e:
+            response_data = {'status': 'error', 'message': str(e)}
+            return JsonResponse("HI",response_data, status=500)
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)
+

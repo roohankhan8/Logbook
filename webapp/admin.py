@@ -4,4 +4,5 @@ from .models import *
 
 admin.site.register(StudentProfile)
 admin.site.register(TeacherProfile)
+admin.site.register(Message)
 admin.site.register(Logbook)

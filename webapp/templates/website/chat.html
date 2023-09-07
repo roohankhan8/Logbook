@@ -53,9 +53,10 @@
           />
           <button
             type="sumbit"
-            id="id_message_send_button"
+            id="id_message_send_button send-message"
             style="color: darkgreen"
             class="btn btn"
+            data-send-url="{% url 'send_message' logbook.code %}"
           >
             Send
           </button>
@@ -76,6 +77,8 @@
   </div>
 </div>
 <script>
+  const sendMessageButton = document.getElementById("send-message");
+  const sendMessageUrl = sendMessageButton.getAttribute("data-send-url");
   class InteractiveChatbox {
     constructor(a, b, c) {
       this.args = {
@@ -100,6 +103,7 @@
       }
     }
   }
+
   const chatButton = document.querySelector(".chatbox__button");
   const chatContent = document.querySelector(".chatbox__support");
 
@@ -128,7 +132,34 @@
         username: "{{request.user.username}}",
       })
     );
+    // Create a data object to send in the request
+    var messageData = {
+      message: messageInput,
+      username: "{{request.user.username}}",
+    };
+
+    fetch(sendMessageUrl, {
+      method: "POST",
+      body: JSON.stringify(messageData),
+      headers: {
+        "Content-Type": "application/json",
+        // "X-CSRFToken": getCookie("csrftoken"), // Include CSRF token if needed
+      },
+    })
+      .then(function (response) {
+        if (response.status === 200) {
+          // Message sent successfully, you can handle this in your UI as needed
+          console.log("Message sent successfully");
+        } else {
+          // Handle errors
+          console.error("Error sending message");
+        }
+      })
+      .catch(function (error) {
+        console.error("Error sending message:", error);
+      });
   };
+
   chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     var div = document.createElement("div");

@@ -1,62 +1,64 @@
-{% extends 'website/header_2.html' %} 
-{% block title %}Notes{% endblock %} 
-{% load static %} 
-{% block content %}
+{% extends 'website/header_2.html' %} {% block title %}Notes{% endblock %} {% load static %} {% block content %}
 <!-- second header  -->
 <nav class="navbars">
   <div class="container-fluid-nav text-center">
     <h5>Notes</h5>
   </div>
-</nav> 
-  <!-- Notes section -->
-  <form action="" method="post">
-    {% csrf_token %}
- <div 
- class="QA_container mb-1 p-5">
-    <div 
-    class="col-md-12"><br>
-        <textarea 
-        class="form-control" 
-        rows="1" 
-        style="height:100%; font-size: 19PX;" 
-        placeholder="Title" 
-        name="note_title">{{logbook.note_title}}</textarea>
+</nav>
+<!-- Notes section -->
+<form action="" method="post">
+  {% csrf_token %}
+  <div class="QA_container mb-1 p-5">
+    <div class="col-md-12">
+      <br />
+      <label for="note_title">Title</label>
+      <textarea
+        class="form-control"
+        rows="1"
+        style="height: 100%; font-size: 19px"
+        placeholder="Title"
+        name="note_title"
+      >
+{{logbook.note_title}}</textarea
+      >
     </div>
-    <div 
-    class="col-md-12"><br>
-    <textarea
-    class="form-control"
-    rows="5" 
-    style="height:100%; font-size: 19PX;" 
-    placeholder="Note something" 
-    name="note_desc">{{logbook.note_desc}}</textarea>
+    <div class="col-md-12">
+      <br />
+      <label for="note_desc">Description</label>
+      <textarea
+        class="form-control"
+        rows="5"
+        style="height: 100%; font-size: 19px"
+        placeholder="Note something"
+        name="note_desc"
+      >
+{{logbook.note_desc}}</textarea
+      >
     </div>
-    <div 
-    class="container"> 
-      <div 
-      class="row">
-        <div 
-        class="col-6 d-flex justify-content-start">
-        <!-- Back button -->
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex justify-content-start">
+          <!-- Back button -->
           <a href="">
-            <button 
-          class="btn btn-success" 
-          type="button">Back</button>
+            <button class="btn btn-success" type="button">Back</button>
           </a>
         </div>
-        <div 
-        class="col-6 d-flex justify-content-end">
-        <!-- Save button -->
-          <button 
-          class="btn btn-success" style="margin: 0 0 0 1em;" 
-          type="submit">Save</button>
-        <!-- Delete button -->
+        <div class="col-6 d-flex justify-content-end">
+          <!-- Save button -->
+          <button
+            class="btn btn-success"
+            style="margin: 0 0 0 1em"
+            type="submit"
+          >
+            Save
+          </button>
+          <!-- Delete button -->
           <!-- <button 
           class="btn btn-success" style="margin: 0 0 0 1em;" 
           type="button">Delete</button> -->
         </div>
       </div>
     </div>
-  </form>
-</div> 
+  </div>
+</form>
 {% endblock content %}
